@@ -25,6 +25,7 @@ public class GreetingController {
         String timeStamp = Calendar.getInstance().getTime().toString();
 
         logger.info("Time Stamp : " + timeStamp);
+        logger.info("Generate response with server time stamp");
 
         return "{'data':'Hello Docker World! - " + timeStamp + "'}";
     }
