@@ -39,7 +39,7 @@ public class GreetingController {
     @ResponseBody
     GreetingQueryResult greeting(GreetingQuery greetingQuery) {
 
-        logger.error(greetingQuery);
+        logger.info(greetingQuery);
 
         String name = "";
 
