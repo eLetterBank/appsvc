@@ -2,6 +2,7 @@ package com.springdemo.contracts;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +28,6 @@ public class GreetingController {
         logger.info("Time Stamp : " + timeStamp);
         logger.info("Generate response with server time stamp");
 
-        return "{'data':'Hello Docker World! - " + timeStamp + "'}";
+        return "{\"data\":\"Hello Docker World! - " + timeStamp + "\"}";
     }
 }

@@ -2,13 +2,48 @@ package com.springdemo.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
 @ComponentScan("com.springdemo.contracts")
-public class SampleApiApplication {
+public class SampleApiApplication extends SpringBootServletInitializer {
 
+    /*
     public static void main(String[] args) {
         SpringApplication.run(SampleApiApplication.class, args);
+    }
+    */
+
+    /**
+     * Used when run as JAR
+     */
+    public static void main(String[] args) {
+        SpringApplication.run(SampleApiApplication.class, args);
+    }
+
+    /**
+     * Used when run as WAR
+     */
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(SampleApiApplication.class);
+    }
+
+    @Configuration
+    @EnableWebMvc
+    public class WebConfig extends WebMvcConfigurerAdapter {
+
+        @Override
+        public void addCorsMappings(CorsRegistry registry) {
+            registry.addMapping("/**");
+        }
     }
 }
