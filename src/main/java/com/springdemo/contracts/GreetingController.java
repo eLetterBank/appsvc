@@ -38,10 +38,16 @@ public class GreetingController {
 
         logger.error(qry);
 
+        GreetingQuery q = qry;
+
+        logger.error("---> " + q.getName());
+        logger.error("---> " + q.getTitles().size());
+
         String name = "";
 
-        if (qry == null || qry.getName() == null) name = "World";
-        else name = qry.getName();
+        if (qry == null) name = "World-1";
+        else if (qry.getName() == null) name = "World-2";
+        else name = qry.getName() + qry.getTitles().toString();
 
         String timeStamp = Calendar.getInstance().getTime().toString();
         String responseData = "Hello " + name + "! - " + timeStamp;
