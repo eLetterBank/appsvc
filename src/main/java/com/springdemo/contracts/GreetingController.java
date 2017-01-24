@@ -2,7 +2,9 @@ package com.springdemo.contracts;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Calendar;
 
@@ -33,8 +35,7 @@ public class GreetingController {
             produces = "application/json")
     public
     @ResponseBody
-    GreetingQueryResult greeting(@RequestParam("qry") GreetingQuery qry) {
-
+    GreetingQueryResult greeting(@JsonRequestParam GreetingQuery qry) {
         logger.error(qry);
 
         GreetingQuery q = qry;
