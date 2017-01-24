@@ -11,7 +11,7 @@ public class GreetingController {
 
     private final Logger logger = LogManager.getRootLogger();
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping(value = "/")
     public String home() {
 
         logger.debug("This is a debug message");
@@ -33,26 +33,23 @@ public class GreetingController {
             produces = "application/json")
     public
     @ResponseBody
-    GreetingQueryResult greeting(GreetingQuery qry) {
+    GreetingQueryResult greeting(@RequestParam("qry") GreetingQuery qry) {
 
-        //logger.debug(qry);
+        logger.error(qry);
 
-        logger.debug("name ---> " + qry.getName());
-        logger.debug("titles ---> " + qry.getTitles().size());
+        GreetingQuery q = qry;
 
-        String name;
+        logger.error("---> " + q.getName());
+
+        String name = "";
 
         if (qry == null) name = "World-1";
         else if (qry.getName() == null) name = "World-2";
-        else name = qry.getName();
 
         String timeStamp = Calendar.getInstance().getTime().toString();
         String responseData = "Hello " + name + "! - " + timeStamp;
 
-        GreetingQueryResult qryResult = new GreetingQueryResult(responseData);
-        qryResult.setTitles(qry.getTitles());
-
-        return qryResult;
+        return new GreetingQueryResult(responseData);
     }
 
 }
