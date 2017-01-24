@@ -1,11 +1,9 @@
 package com.springdemo.contracts;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GreetingQuery {
     private String name;
-    private List titles;
 
     public void setName(String name)
     {
@@ -17,6 +15,7 @@ public class GreetingQuery {
         return this.name;
     }
 
+    private List titles;
     public void setTitles(List titles)
     {
         this.titles = titles;

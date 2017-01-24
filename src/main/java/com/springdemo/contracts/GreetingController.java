@@ -28,31 +28,31 @@ public class GreetingController {
         return "{\"data\":\"Hello Docker World! - " + timeStamp + "\"}";
     }
 
-    @RequestMapping(value = "/greeting",
-            method = RequestMethod.GET,
-            //consumes = "application/json",
+    @GetMapping(value = "/greeting",
+            consumes = "application/json",
             produces = "application/json")
     public
     @ResponseBody
     GreetingQueryResult greeting(GreetingQuery qry) {
 
-        logger.error(qry);
+        //logger.debug(qry);
 
-        GreetingQuery q = qry;
+        logger.debug("name ---> " + qry.getName());
+        logger.debug("titles ---> " + qry.getTitles().size());
 
-        logger.error("---> " + q.getName());
-        logger.error("---> " + q.getTitles().size());
-
-        String name = "";
+        String name;
 
         if (qry == null) name = "World-1";
         else if (qry.getName() == null) name = "World-2";
-        else name = qry.getName() + qry.getTitles().toString();
+        else name = qry.getName();
 
         String timeStamp = Calendar.getInstance().getTime().toString();
         String responseData = "Hello " + name + "! - " + timeStamp;
 
-        return new GreetingQueryResult(responseData);
+        GreetingQueryResult qryResult = new GreetingQueryResult(responseData);
+        qryResult.setTitles(qry.getTitles());
+
+        return qryResult;
     }
 
 }
