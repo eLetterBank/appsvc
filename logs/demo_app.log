@@ -88,3 +88,214 @@
 [FATAL] 2017-01-12 01:26:28.320 [main]  - This is a fatal message
 [ERROR] 2017-01-12 01:40:14.052 [main]  - This is an error message
 [FATAL] 2017-01-12 01:40:14.053 [main]  - This is a fatal message
+[ERROR] 2017-01-12 12:42:42.972 [main]  - This is an error message
+[FATAL] 2017-01-12 12:42:42.972 [main]  - This is a fatal message
+[ERROR] 2017-01-12 13:00:17.164 [main]  - This is an error message
+[FATAL] 2017-01-12 13:00:17.165 [main]  - This is a fatal message
+[ERROR] 2017-01-12 13:42:17.459 [main]  - This is an error message
+[FATAL] 2017-01-12 13:42:17.459 [main]  - This is a fatal message
+[ERROR] 2017-01-12 13:51:35.013 [main]  - This is an error message
+[FATAL] 2017-01-12 13:51:35.013 [main]  - This is a fatal message
+[ERROR] 2017-01-12 13:52:42.682 [main]  - This is an error message
+[FATAL] 2017-01-12 13:52:42.683 [main]  - This is a fatal message
+[ERROR] 2017-01-12 13:55:41.676 [main]  - This is an error message
+[FATAL] 2017-01-12 13:55:41.677 [main]  - This is a fatal message
+[ERROR] 2017-01-24 09:46:28.726 [main]  - This is an error message
+[FATAL] 2017-01-24 09:46:28.726 [main]  - This is a fatal message
+[ERROR] 2017-01-24 10:08:48.108 [main]  - This is an error message
+[FATAL] 2017-01-24 10:08:48.108 [main]  - This is a fatal message
+[ERROR] 2017-01-24 10:19:57.101 [main]  - This is an error message
+[FATAL] 2017-01-24 10:19:57.101 [main]  - This is a fatal message
+[ERROR] 2017-01-24 10:21:34.216 [main]  - This is an error message
+[FATAL] 2017-01-24 10:21:34.217 [main]  - This is a fatal message
+[ERROR] 2017-01-24 10:23:07.612 [main]  - This is an error message
+[FATAL] 2017-01-24 10:23:07.612 [main]  - This is a fatal message
+[ERROR] 2017-01-24 10:37:34.111 [main]  - This is an error message
+[FATAL] 2017-01-24 10:37:34.111 [main]  - This is a fatal message
+[ERROR] 2017-01-24 10:42:58.176 [main]  - This is an error message
+[FATAL] 2017-01-24 10:42:58.177 [main]  - This is a fatal message
+[ERROR] 2017-01-24 10:49:41.250 [main]  - This is an error message
+[FATAL] 2017-01-24 10:49:41.251 [main]  - This is a fatal message
+[ERROR] 2017-01-24 11:08:05.204 [http-nio-8080-exec-1]  - com.springdemo.contracts.GreetingQuery@47e37900
+[ERROR] 2017-01-24 11:08:05.205 [http-nio-8080-exec-1]  - ---> Tiger
+[ERROR] 2017-01-24 11:08:05.205 [http-nio-8080-exec-1]  - ---> 4
+[ERROR] 2017-01-24 11:08:06.817 [http-nio-8080-exec-2]  - com.springdemo.contracts.GreetingQuery@3c68a9d4
+[ERROR] 2017-01-24 11:08:06.817 [http-nio-8080-exec-2]  - ---> Tiger
+[ERROR] 2017-01-24 11:08:06.817 [http-nio-8080-exec-2]  - ---> 4
+[ERROR] 2017-01-24 11:08:07.522 [http-nio-8080-exec-3]  - com.springdemo.contracts.GreetingQuery@5045a75
+[ERROR] 2017-01-24 11:08:07.523 [http-nio-8080-exec-3]  - ---> Tiger
+[ERROR] 2017-01-24 11:08:07.523 [http-nio-8080-exec-3]  - ---> 4
+[ERROR] 2017-01-24 11:08:08.090 [http-nio-8080-exec-4]  - com.springdemo.contracts.GreetingQuery@5c14a10f
+[ERROR] 2017-01-24 11:08:08.090 [http-nio-8080-exec-4]  - ---> Tiger
+[ERROR] 2017-01-24 11:08:08.090 [http-nio-8080-exec-4]  - ---> 4
+[ERROR] 2017-01-24 11:08:08.603 [http-nio-8080-exec-5]  - com.springdemo.contracts.GreetingQuery@342d6cf
+[ERROR] 2017-01-24 11:08:08.603 [http-nio-8080-exec-5]  - ---> Tiger
+[ERROR] 2017-01-24 11:08:08.603 [http-nio-8080-exec-5]  - ---> 4
+[ERROR] 2017-01-24 11:08:09.191 [http-nio-8080-exec-6]  - com.springdemo.contracts.GreetingQuery@3e5f73cf
+[ERROR] 2017-01-24 11:08:09.191 [http-nio-8080-exec-6]  - ---> Tiger
+[ERROR] 2017-01-24 11:08:09.191 [http-nio-8080-exec-6]  - ---> 4
+[ERROR] 2017-01-24 11:08:10.514 [http-nio-8080-exec-7]  - com.springdemo.contracts.GreetingQuery@1325154f
+[ERROR] 2017-01-24 11:08:10.514 [http-nio-8080-exec-7]  - ---> Tiger
+[ERROR] 2017-01-24 11:08:10.514 [http-nio-8080-exec-7]  - ---> 4
+[ERROR] 2017-01-24 11:08:11.324 [http-nio-8080-exec-8]  - com.springdemo.contracts.GreetingQuery@54281785
+[ERROR] 2017-01-24 11:08:11.324 [http-nio-8080-exec-8]  - ---> Tiger
+[ERROR] 2017-01-24 11:08:11.324 [http-nio-8080-exec-8]  - ---> 4
+[ERROR] 2017-01-24 11:08:11.877 [http-nio-8080-exec-9]  - com.springdemo.contracts.GreetingQuery@41cb2b2c
+[ERROR] 2017-01-24 11:08:11.877 [http-nio-8080-exec-9]  - ---> Tiger
+[ERROR] 2017-01-24 11:08:11.878 [http-nio-8080-exec-9]  - ---> 4
+[ERROR] 2017-01-24 11:08:12.426 [http-nio-8080-exec-10]  - com.springdemo.contracts.GreetingQuery@cc4ffb2
+[ERROR] 2017-01-24 11:08:12.426 [http-nio-8080-exec-10]  - ---> Tiger
+[ERROR] 2017-01-24 11:08:12.426 [http-nio-8080-exec-10]  - ---> 4
+[ERROR] 2017-01-24 11:08:14.107 [http-nio-8080-exec-1]  - com.springdemo.contracts.GreetingQuery@27197ba
+[ERROR] 2017-01-24 11:08:14.107 [http-nio-8080-exec-1]  - ---> Tiger
+[ERROR] 2017-01-24 11:08:14.107 [http-nio-8080-exec-1]  - ---> 4
+[ERROR] 2017-01-24 11:08:14.651 [http-nio-8080-exec-2]  - com.springdemo.contracts.GreetingQuery@32af5029
+[ERROR] 2017-01-24 11:08:14.651 [http-nio-8080-exec-2]  - ---> Tiger
+[ERROR] 2017-01-24 11:08:14.651 [http-nio-8080-exec-2]  - ---> 4
+[ERROR] 2017-01-24 11:08:25.347 [http-nio-8080-exec-4]  - com.springdemo.contracts.GreetingQuery@73c1b189
+[ERROR] 2017-01-24 11:08:25.347 [http-nio-8080-exec-4]  - ---> Tiger
+[ERROR] 2017-01-24 11:08:25.347 [http-nio-8080-exec-4]  - ---> 3
+[ERROR] 2017-01-24 11:08:29.427 [http-nio-8080-exec-5]  - com.springdemo.contracts.GreetingQuery@d8528d7
+[ERROR] 2017-01-24 11:08:29.427 [http-nio-8080-exec-5]  - ---> Tiger
+[ERROR] 2017-01-24 11:08:29.427 [http-nio-8080-exec-5]  - ---> 3
+[ERROR] 2017-01-24 11:08:38.208 [http-nio-8080-exec-6]  - com.springdemo.contracts.GreetingQuery@30988a74
+[ERROR] 2017-01-24 11:08:38.208 [http-nio-8080-exec-6]  - ---> Tiger
+[ERROR] 2017-01-24 11:08:38.208 [http-nio-8080-exec-6]  - ---> 3
+[ERROR] 2017-01-24 11:10:30.353 [http-nio-8080-exec-9]  - com.springdemo.contracts.GreetingQuery@6e1e3811
+[ERROR] 2017-01-24 11:10:30.354 [http-nio-8080-exec-9]  - ---> Tiger
+[ERROR] 2017-01-24 11:10:30.355 [http-nio-8080-exec-9]  - ---> 3
+[ERROR] 2017-01-24 11:10:46.394 [http-nio-8080-exec-10]  - com.springdemo.contracts.GreetingQuery@203005a
+[ERROR] 2017-01-24 11:10:46.395 [http-nio-8080-exec-10]  - ---> Tiger
+[ERROR] 2017-01-24 11:10:46.395 [http-nio-8080-exec-10]  - ---> 3
+[ERROR] 2017-01-24 11:27:15.563 [http-nio-8080-exec-4]  - com.springdemo.contracts.GreetingQuery@45378e7d
+[ERROR] 2017-01-24 11:27:15.563 [http-nio-8080-exec-4]  - ---> Tiger
+[ERROR] 2017-01-24 11:27:15.564 [http-nio-8080-exec-4]  - ---> 3
+[ERROR] 2017-01-24 11:27:24.117 [http-nio-8080-exec-6]  - com.springdemo.contracts.GreetingQuery@34a718bf
+[ERROR] 2017-01-24 11:27:24.118 [http-nio-8080-exec-6]  - ---> Tiger
+[ERROR] 2017-01-24 11:27:24.118 [http-nio-8080-exec-6]  - ---> 3
+[ERROR] 2017-01-24 11:27:27.389 [http-nio-8080-exec-8]  - com.springdemo.contracts.GreetingQuery@5aeff370
+[ERROR] 2017-01-24 11:27:27.390 [http-nio-8080-exec-8]  - ---> Tiger
+[ERROR] 2017-01-24 11:27:27.390 [http-nio-8080-exec-8]  - ---> 3
+[ERROR] 2017-01-24 11:27:34.423 [http-nio-8080-exec-1]  - com.springdemo.contracts.GreetingQuery@2643d801
+[ERROR] 2017-01-24 11:27:34.424 [http-nio-8080-exec-1]  - ---> Tiger
+[ERROR] 2017-01-24 11:27:34.424 [http-nio-8080-exec-1]  - ---> 3
+[ERROR] 2017-01-24 11:27:35.946 [http-nio-8080-exec-2]  - com.springdemo.contracts.GreetingQuery@cce5c22
+[ERROR] 2017-01-24 11:27:35.947 [http-nio-8080-exec-2]  - ---> Tiger
+[ERROR] 2017-01-24 11:27:35.947 [http-nio-8080-exec-2]  - ---> 3
+[ERROR] 2017-01-24 11:27:37.647 [http-nio-8080-exec-3]  - com.springdemo.contracts.GreetingQuery@7753be17
+[ERROR] 2017-01-24 11:27:37.647 [http-nio-8080-exec-3]  - ---> Tiger
+[ERROR] 2017-01-24 11:27:37.647 [http-nio-8080-exec-3]  - ---> 3
+[ERROR] 2017-01-24 11:27:38.922 [http-nio-8080-exec-4]  - com.springdemo.contracts.GreetingQuery@597f7602
+[ERROR] 2017-01-24 11:27:38.923 [http-nio-8080-exec-4]  - ---> Tiger
+[ERROR] 2017-01-24 11:27:38.923 [http-nio-8080-exec-4]  - ---> 3
+[ERROR] 2017-01-24 11:27:40.951 [http-nio-8080-exec-5]  - com.springdemo.contracts.GreetingQuery@9babdbf
+[ERROR] 2017-01-24 11:27:40.951 [http-nio-8080-exec-5]  - ---> Tiger
+[ERROR] 2017-01-24 11:27:40.951 [http-nio-8080-exec-5]  - ---> 3
+[ERROR] 2017-01-24 11:27:42.616 [http-nio-8080-exec-6]  - com.springdemo.contracts.GreetingQuery@71a5804f
+[ERROR] 2017-01-24 11:27:42.617 [http-nio-8080-exec-6]  - ---> Tiger
+[ERROR] 2017-01-24 11:27:42.617 [http-nio-8080-exec-6]  - ---> 3
+[ERROR] 2017-01-24 11:27:44.790 [http-nio-8080-exec-7]  - com.springdemo.contracts.GreetingQuery@1de2f95b
+[ERROR] 2017-01-24 11:27:44.790 [http-nio-8080-exec-7]  - ---> Tiger
+[ERROR] 2017-01-24 11:27:44.790 [http-nio-8080-exec-7]  - ---> 3
+[ERROR] 2017-01-24 11:27:49.988 [http-nio-8080-exec-8]  - com.springdemo.contracts.GreetingQuery@1bd2f94b
+[ERROR] 2017-01-24 11:27:49.988 [http-nio-8080-exec-8]  - ---> Tiger
+[ERROR] 2017-01-24 11:27:49.988 [http-nio-8080-exec-8]  - ---> 4
+[ERROR] 2017-01-24 11:28:52.975 [http-nio-8080-exec-3]  - com.springdemo.contracts.GreetingQuery@20336883
+[ERROR] 2017-01-24 11:28:52.975 [http-nio-8080-exec-3]  - ---> Tiger
+[ERROR] 2017-01-24 11:28:52.975 [http-nio-8080-exec-3]  - ---> 3
+[ERROR] 2017-01-24 11:29:11.128 [http-nio-8080-exec-5]  - com.springdemo.contracts.GreetingQuery@4cb822ec
+[ERROR] 2017-01-24 11:29:11.128 [http-nio-8080-exec-5]  - ---> Tiger
+[ERROR] 2017-01-24 11:29:11.128 [http-nio-8080-exec-5]  - ---> 3
+[ERROR] 2017-01-24 11:29:12.654 [http-nio-8080-exec-6]  - com.springdemo.contracts.GreetingQuery@34a154bf
+[ERROR] 2017-01-24 11:29:12.654 [http-nio-8080-exec-6]  - ---> Tiger
+[ERROR] 2017-01-24 11:29:12.654 [http-nio-8080-exec-6]  - ---> 3
+[ERROR] 2017-01-24 11:29:14.319 [http-nio-8080-exec-7]  - com.springdemo.contracts.GreetingQuery@19dd7e3f
+[ERROR] 2017-01-24 11:29:14.320 [http-nio-8080-exec-7]  - ---> Tiger
+[ERROR] 2017-01-24 11:29:14.320 [http-nio-8080-exec-7]  - ---> 3
+[ERROR] 2017-01-24 11:29:16.130 [http-nio-8080-exec-8]  - com.springdemo.contracts.GreetingQuery@fd2518b
+[ERROR] 2017-01-24 11:29:16.130 [http-nio-8080-exec-8]  - ---> Tiger
+[ERROR] 2017-01-24 11:29:16.130 [http-nio-8080-exec-8]  - ---> 3
+[ERROR] 2017-01-24 11:29:28.625 [http-nio-8080-exec-5]  - com.springdemo.contracts.GreetingQuery@5959611a
+[ERROR] 2017-01-24 11:29:28.625 [http-nio-8080-exec-5]  - ---> Tiger
+[ERROR] 2017-01-24 11:29:28.625 [http-nio-8080-exec-5]  - ---> 3
+[ERROR] 2017-01-24 11:29:44.036 [http-nio-8080-exec-6]  - com.springdemo.contracts.GreetingQuery@401eb375
+[ERROR] 2017-01-24 11:29:44.037 [http-nio-8080-exec-6]  - ---> Tiger
+[ERROR] 2017-01-24 11:29:44.037 [http-nio-8080-exec-6]  - ---> 3
+[ERROR] 2017-01-24 11:30:06.908 [http-nio-8080-exec-7]  - com.springdemo.contracts.GreetingQuery@5cdff360
+[ERROR] 2017-01-24 11:30:06.909 [http-nio-8080-exec-7]  - ---> Tiger
+[ERROR] 2017-01-24 11:30:06.910 [http-nio-8080-exec-7]  - ---> 3
+[ERROR] 2017-01-24 11:30:08.976 [http-nio-8080-exec-8]  - com.springdemo.contracts.GreetingQuery@2a834772
+[ERROR] 2017-01-24 11:30:08.976 [http-nio-8080-exec-8]  - ---> Tiger
+[ERROR] 2017-01-24 11:30:08.976 [http-nio-8080-exec-8]  - ---> 3
+[ERROR] 2017-01-24 11:30:10.933 [http-nio-8080-exec-10]  - com.springdemo.contracts.GreetingQuery@682c44db
+[ERROR] 2017-01-24 11:30:10.933 [http-nio-8080-exec-10]  - ---> Tiger
+[ERROR] 2017-01-24 11:30:10.933 [http-nio-8080-exec-10]  - ---> 3
+[ERROR] 2017-01-24 11:30:27.693 [http-nio-8080-exec-2]  - com.springdemo.contracts.GreetingQuery@640ae6bb
+[ERROR] 2017-01-24 11:30:27.693 [http-nio-8080-exec-2]  - ---> Tiger
+[ERROR] 2017-01-24 11:30:27.693 [http-nio-8080-exec-2]  - ---> 3
+[ERROR] 2017-01-24 11:33:09.725 [http-nio-8080-exec-9]  - com.springdemo.contracts.GreetingQuery@7591c2ad
+[ERROR] 2017-01-24 11:33:09.726 [http-nio-8080-exec-9]  - ---> Tiger
+[ERROR] 2017-01-24 11:33:09.726 [http-nio-8080-exec-9]  - ---> 4
+[ERROR] 2017-01-24 11:33:17.266 [http-nio-8080-exec-4]  - com.springdemo.contracts.GreetingQuery@93c8bae
+[ERROR] 2017-01-24 11:33:17.267 [http-nio-8080-exec-4]  - ---> Tiger
+[ERROR] 2017-01-24 11:33:17.267 [http-nio-8080-exec-4]  - ---> 3
+[ERROR] 2017-01-24 11:34:23.571 [http-nio-8080-exec-1]  - com.springdemo.contracts.GreetingQuery@47c18e87
+[ERROR] 2017-01-24 11:34:23.571 [http-nio-8080-exec-1]  - ---> Tiger
+[ERROR] 2017-01-24 11:34:23.571 [http-nio-8080-exec-1]  - ---> 4
+[ERROR] 2017-01-24 11:34:31.459 [http-nio-8080-exec-2]  - com.springdemo.contracts.GreetingQuery@7f93a7f
+[ERROR] 2017-01-24 11:34:31.462 [http-nio-8080-exec-2]  - ---> Tiger
+[ERROR] 2017-01-24 11:34:31.462 [http-nio-8080-exec-2]  - ---> 3
+[ERROR] 2017-01-24 11:35:10.507 [http-nio-8080-exec-5]  - com.springdemo.contracts.GreetingQuery@4a23347f
+[ERROR] 2017-01-24 11:35:10.507 [http-nio-8080-exec-5]  - ---> Tiger
+[ERROR] 2017-01-24 11:35:10.507 [http-nio-8080-exec-5]  - ---> 3
+[ERROR] 2017-01-24 11:35:20.742 [http-nio-8080-exec-6]  - com.springdemo.contracts.GreetingQuery@b504cc7
+[ERROR] 2017-01-24 11:35:20.742 [http-nio-8080-exec-6]  - ---> Tiger
+[ERROR] 2017-01-24 11:35:20.742 [http-nio-8080-exec-6]  - ---> 3
+[ERROR] 2017-01-24 11:35:22.043 [http-nio-8080-exec-7]  - com.springdemo.contracts.GreetingQuery@43338328
+[ERROR] 2017-01-24 11:35:22.043 [http-nio-8080-exec-7]  - ---> Tiger
+[ERROR] 2017-01-24 11:35:22.043 [http-nio-8080-exec-7]  - ---> 3
+[ERROR] 2017-01-24 11:35:51.712 [http-nio-8080-exec-9]  - com.springdemo.contracts.GreetingQuery@1865dcd8
+[ERROR] 2017-01-24 11:35:51.712 [http-nio-8080-exec-9]  - ---> Tiger
+[ERROR] 2017-01-24 11:35:51.712 [http-nio-8080-exec-9]  - ---> 3
+[ERROR] 2017-01-24 11:35:54.811 [http-nio-8080-exec-10]  - com.springdemo.contracts.GreetingQuery@3ff244b
+[ERROR] 2017-01-24 11:35:54.811 [http-nio-8080-exec-10]  - ---> Tiger
+[ERROR] 2017-01-24 11:35:54.811 [http-nio-8080-exec-10]  - ---> 3
+[ERROR] 2017-01-24 11:35:56.339 [http-nio-8080-exec-1]  - com.springdemo.contracts.GreetingQuery@30aa3d44
+[ERROR] 2017-01-24 11:35:56.340 [http-nio-8080-exec-1]  - ---> Tiger
+[ERROR] 2017-01-24 11:35:56.340 [http-nio-8080-exec-1]  - ---> 3
+[ERROR] 2017-01-24 11:36:41.374 [http-nio-8080-exec-3]  - com.springdemo.contracts.GreetingQuery@72ef963a
+[ERROR] 2017-01-24 11:36:41.374 [http-nio-8080-exec-3]  - ---> Tiger
+[ERROR] 2017-01-24 11:36:41.374 [http-nio-8080-exec-3]  - ---> 3
+[ERROR] 2017-01-24 11:36:44.855 [http-nio-8080-exec-5]  - com.springdemo.contracts.GreetingQuery@44e4d34b
+[ERROR] 2017-01-24 11:36:44.855 [http-nio-8080-exec-5]  - ---> Tiger
+[ERROR] 2017-01-24 11:36:44.855 [http-nio-8080-exec-5]  - ---> 3
+[ERROR] 2017-01-24 11:36:47.536 [http-nio-8080-exec-6]  - com.springdemo.contracts.GreetingQuery@597a3dd
+[ERROR] 2017-01-24 11:36:47.536 [http-nio-8080-exec-6]  - ---> Tiger
+[ERROR] 2017-01-24 11:36:47.536 [http-nio-8080-exec-6]  - ---> 3
+[ERROR] 2017-01-24 11:36:49.452 [http-nio-8080-exec-7]  - com.springdemo.contracts.GreetingQuery@4df4653e
+[ERROR] 2017-01-24 11:36:49.452 [http-nio-8080-exec-7]  - ---> Tiger
+[ERROR] 2017-01-24 11:36:49.452 [http-nio-8080-exec-7]  - ---> 3
+[ERROR] 2017-01-24 11:37:25.309 [http-nio-8080-exec-8]  - com.springdemo.contracts.GreetingQuery@3cb25496
+[ERROR] 2017-01-24 11:37:25.314 [http-nio-8080-exec-8]  - ---> Tiger
+[ERROR] 2017-01-24 11:37:25.314 [http-nio-8080-exec-8]  - ---> 3
+[ERROR] 2017-01-24 11:37:30.966 [http-nio-8080-exec-9]  - com.springdemo.contracts.GreetingQuery@16a221a4
+[ERROR] 2017-01-24 11:37:30.967 [http-nio-8080-exec-9]  - ---> Tiger
+[ERROR] 2017-01-24 11:37:30.967 [http-nio-8080-exec-9]  - ---> 3
+[ERROR] 2017-01-24 11:51:40.892 [http-nio-8080-exec-4]  - com.springdemo.contracts.GreetingQuery@1dec5367
+[ERROR] 2017-01-24 11:51:40.893 [http-nio-8080-exec-4]  - ---> Tiger
+[ERROR] 2017-01-24 11:51:40.893 [http-nio-8080-exec-4]  - ---> 3
+[ERROR] 2017-01-24 11:52:22.982 [http-nio-8080-exec-2]  - com.springdemo.contracts.GreetingQuery@edbdc0d
+[ERROR] 2017-01-24 11:52:22.982 [http-nio-8080-exec-2]  - ---> Tiger
+[ERROR] 2017-01-24 11:52:22.982 [http-nio-8080-exec-2]  - ---> 4
+[ERROR] 2017-01-24 11:52:24.078 [http-nio-8080-exec-3]  - com.springdemo.contracts.GreetingQuery@37ed0603
+[ERROR] 2017-01-24 11:52:24.078 [http-nio-8080-exec-3]  - ---> Tiger
+[ERROR] 2017-01-24 11:52:24.078 [http-nio-8080-exec-3]  - ---> 4
+[ERROR] 2017-01-24 11:52:24.782 [http-nio-8080-exec-5]  - com.springdemo.contracts.GreetingQuery@40db5f0f
+[ERROR] 2017-01-24 11:52:24.782 [http-nio-8080-exec-5]  - ---> Tiger
+[ERROR] 2017-01-24 11:52:24.782 [http-nio-8080-exec-5]  - ---> 4
+[ERROR] 2017-01-24 11:52:25.433 [http-nio-8080-exec-6]  - com.springdemo.contracts.GreetingQuery@1a827b7
+[ERROR] 2017-01-24 11:52:25.433 [http-nio-8080-exec-6]  - ---> Tiger
+[ERROR] 2017-01-24 11:52:25.434 [http-nio-8080-exec-6]  - ---> 4
+[ERROR] 2017-01-24 11:52:26.040 [http-nio-8080-exec-7]  - com.springdemo.contracts.GreetingQuery@49cbe858
+[ERROR] 2017-01-24 11:52:26.040 [http-nio-8080-exec-7]  - ---> Tiger
+[ERROR] 2017-01-24 11:52:26.041 [http-nio-8080-exec-7]  - ---> 4
