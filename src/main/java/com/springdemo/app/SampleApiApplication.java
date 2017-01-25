@@ -1,6 +1,6 @@
 package com.springdemo.app;
 
-import com.springdemo.contracts.JsonArgumentResolver;
+import com.vsolv.appframework.GetJsonArgumentResolver;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -50,7 +50,7 @@ public class SampleApiApplication extends SpringBootServletInitializer {
 
         @Override
         public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-            argumentResolvers.add(new JsonArgumentResolver());
+            argumentResolvers.add(new GetJsonArgumentResolver());
         }
     }
 }

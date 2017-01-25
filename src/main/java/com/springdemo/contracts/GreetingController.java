@@ -1,5 +1,6 @@
 package com.springdemo.contracts;
 
+import com.vsolv.appframework.GetJsonRequestParam;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +36,7 @@ public class GreetingController {
             produces = "application/json")
     public
     @ResponseBody
-    GreetingQueryResult greeting(@JsonRequestParam GreetingQuery qry) {
+    GreetingQueryResult greeting(@GetJsonRequestParam GreetingQuery qry) {
         logger.error(qry);
 
         GreetingQuery q = qry;
@@ -46,9 +47,10 @@ public class GreetingController {
 
         if (qry == null) name = "World-1";
         else if (qry.getName() == null) name = "World-2";
+        else name = qry.getName();
 
         String timeStamp = Calendar.getInstance().getTime().toString();
-        String responseData = "Hello " + name + "! - " + timeStamp;
+        String responseData = "Hello " + name + " " + qry.getAddress().getStreet() + "! - " + timeStamp;
 
         return new GreetingQueryResult(responseData);
     }
