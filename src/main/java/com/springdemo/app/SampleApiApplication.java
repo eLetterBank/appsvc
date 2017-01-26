@@ -17,13 +17,6 @@ import java.util.List;
 @SpringBootApplication
 @ComponentScan("com.springdemo.contracts")
 public class SampleApiApplication extends SpringBootServletInitializer {
-
-    /*
-    public static void main(String[] args) {
-        SpringApplication.run(SampleApiApplication.class, args);
-    }
-    */
-
     /**
      * Used when run as JAR
      */
@@ -43,11 +36,17 @@ public class SampleApiApplication extends SpringBootServletInitializer {
     @EnableWebMvc
     public class WebConfig extends WebMvcConfigurerAdapter {
 
+        /**
+        * Enable CORS
+        */
         @Override
         public void addCorsMappings(CorsRegistry registry) {
             registry.addMapping("/**");
         }
 
+        /**
+         * Enable GET Jason arguments
+         */
         @Override
         public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
             argumentResolvers.add(new GetJsonArgumentResolver());
