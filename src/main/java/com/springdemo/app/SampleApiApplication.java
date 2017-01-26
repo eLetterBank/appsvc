@@ -45,7 +45,7 @@ public class SampleApiApplication extends SpringBootServletInitializer {
         }
 
         /**
-         * Enable GET Jason arguments
+         * Enable GET Json arguments
          */
         @Override
         public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
