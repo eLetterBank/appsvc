@@ -1,6 +1,6 @@
 package com.springdemo.app;
 
-import com.springdemo.contracts.GreetingController;
+import com.springdemo.greeting.contracts.GreetingController;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;

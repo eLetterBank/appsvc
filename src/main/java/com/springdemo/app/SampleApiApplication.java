@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import java.util.List;
 
 @SpringBootApplication
-@ComponentScan("com.springdemo.contracts")
+@ComponentScan("com.springdemo")
 public class SampleApiApplication extends SpringBootServletInitializer {
     /**
      * Used when run as JAR

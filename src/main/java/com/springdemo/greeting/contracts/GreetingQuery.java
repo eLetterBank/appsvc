@@ -1,7 +1,10 @@
-package com.springdemo.contracts;
+package com.springdemo.greeting.contracts;
 
-public class GreetingQuery {
+import com.vsolv.appframework.cqrs.query.BaseQuery;
+
+public class GreetingQuery extends BaseQuery {
     private String name;
+    private Address address;
 
     public Address getAddress() {
         return address;
@@ -11,16 +14,11 @@ public class GreetingQuery {
         this.address = address;
     }
 
-    private Address address;
-
-
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return this.name;
     }
 }

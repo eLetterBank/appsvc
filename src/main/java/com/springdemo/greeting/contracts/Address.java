@@ -1,4 +1,4 @@
-package com.springdemo.contracts;
+package com.springdemo.greeting.contracts;
 
 public class Address {
     private String street;
@@ -8,7 +8,7 @@ public class Address {
         this.street = street;
     }
 
-    String getStreet() {
+    public String getStreet() {
         return this.street;
     }
 }

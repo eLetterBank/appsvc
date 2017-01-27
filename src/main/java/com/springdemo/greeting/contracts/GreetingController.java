@@ -1,8 +1,10 @@
-package com.springdemo.contracts;
+package com.springdemo.greeting.contracts;
 
 import com.vsolv.appframework.GetJsonRequestParam;
+import com.vsolv.appframework.cqrs.query.QueryHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +15,9 @@ import java.util.Calendar;
 public class GreetingController {
 
     private final Logger logger = LogManager.getRootLogger();
+
+    @Autowired
+    private QueryHandler<GreetingQuery, GreetingQueryResult> queryHandler;
 
     @GetMapping(value = "/")
     public String home() {
@@ -37,22 +42,22 @@ public class GreetingController {
     public
     @ResponseBody
     GreetingQueryResult greeting(@GetJsonRequestParam GreetingQuery qry) {
-        logger.error(qry);
 
-        GreetingQuery q = qry;
+        logger.info(qry);
 
-        logger.error("---> " + q.getName());
 
-        String name = "";
+//        String name = "";
+//
+//        if (qry == null) name = "World-1";
+//        else if (qry.getName() == null) name = "World-2";
+//        else name = qry.getName();
+//
+//        String timeStamp = Calendar.getInstance().getTime().toString();
+//        String responseData = "Hello " + name + " " + qry.getAddress().getStreet() + "! - " + timeStamp;
+//
+//        return new GreetingQueryResult (responseData);
 
-        if (qry == null) name = "World-1";
-        else if (qry.getName() == null) name = "World-2";
-        else name = qry.getName();
-
-        String timeStamp = Calendar.getInstance().getTime().toString();
-        String responseData = "Hello " + name + " " + qry.getAddress().getStreet() + "! - " + timeStamp;
-
-        return new GreetingQueryResult(responseData);
+        return (GreetingQueryResult) queryHandler.execute(qry);
     }
 
 }

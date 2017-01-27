@@ -1,6 +1,8 @@
-package com.springdemo.contracts;
+package com.springdemo.greeting.contracts;
 
-public class GreetingQueryResult {
+import com.vsolv.appframework.cqrs.query.QueryResult;
+
+public class GreetingQueryResult implements QueryResult {
     private final String content;
 
     public GreetingQueryResult(String content) {
