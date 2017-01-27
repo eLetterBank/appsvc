@@ -7,8 +7,6 @@ import com.vsolv.appframework.cqrs.query.QueryHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Calendar;
-
 @Service
 class GreetingService implements QueryHandler<GreetingQuery, GreetingQueryResult> {
 
