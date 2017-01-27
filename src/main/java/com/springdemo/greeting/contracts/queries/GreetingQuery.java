@@ -1,5 +1,6 @@
-package com.springdemo.greeting.queries;
+package com.springdemo.greeting.contracts.queries;
 
+import com.springdemo.greeting.contracts.shared.Address;
 import com.vsolv.appframework.cqrs.query.BaseQuery;
 
 public class GreetingQuery extends BaseQuery {

@@ -1,4 +1,4 @@
-package com.springdemo.greeting.queries;
+package com.springdemo.greeting.contracts.shared;
 
 public class Address {
     private String street;
