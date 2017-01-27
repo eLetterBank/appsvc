@@ -21,7 +21,7 @@ public class GreetingCommandController {
     @GetMapping(value = "/")
     public String serviceHealth() {
         String timeStamp = Calendar.getInstance().getTime().toString();
-        return "{\"data\":\"Hello World! From: " + this.getClass().getName() + " - " + timeStamp + "\"}";
+        return "{\"data\":\"Hello World! From " + this.getClass().getName() + " - " + timeStamp + "\"}";
     }
 
     @PostMapping(value = "/addGreeting",
