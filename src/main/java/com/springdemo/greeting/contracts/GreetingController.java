@@ -1,5 +1,7 @@
 package com.springdemo.greeting.contracts;
 
+import com.springdemo.greeting.queries.GreetingQuery;
+import com.springdemo.greeting.queries.GreetingQueryResult;
 import com.vsolv.appframework.cqrs.query.QueryHandler;
 import com.vsolv.appframework.http.request.GetJsonRequestParam;
 import org.apache.logging.log4j.LogManager;

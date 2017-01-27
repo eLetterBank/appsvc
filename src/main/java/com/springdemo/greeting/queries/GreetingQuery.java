@@ -1,4 +1,4 @@
-package com.springdemo.greeting.contracts;
+package com.springdemo.greeting.queries;
 
 import com.vsolv.appframework.cqrs.query.BaseQuery;
 

@@ -1,7 +1,6 @@
 package com.springdemo.greeting.handlers;
-
-import com.springdemo.greeting.contracts.GreetingQuery;
-import com.springdemo.greeting.contracts.GreetingQueryResult;
+import com.springdemo.greeting.queries.GreetingQuery;
+import com.springdemo.greeting.queries.GreetingQueryResult;
 import com.springdemo.greeting.repositories.TimeRepository;
 import com.vsolv.appframework.cqrs.query.QueryHandler;
 import org.springframework.beans.factory.annotation.Autowired;
