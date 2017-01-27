@@ -1,29 +1,28 @@
 package com.springdemo.greeting.contracts;
 
-import com.springdemo.greeting.contracts.commands.AddGreetingCommand;
-import com.springdemo.greeting.contracts.commands.AddGreetingCommandResult;
 import com.springdemo.greeting.contracts.queries.GreetingQuery;
 import com.springdemo.greeting.contracts.queries.GreetingQueryResult;
-import com.vsolv.appframework.cqrs.command.CommandHandler;
 import com.vsolv.appframework.cqrs.query.QueryHandler;
 import com.vsolv.appframework.http.request.GetJsonRequestParam;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Calendar;
 
 @RestController
-public class GreetingController {
+@RequestMapping("/api/qry")
+public class GreetingQueryController {
 
     private final Logger logger = LogManager.getRootLogger();
 
     @Autowired
     private QueryHandler<GreetingQuery, GreetingQueryResult> greetingQryHandler;
 
-    @Autowired
-    private CommandHandler<AddGreetingCommand, AddGreetingCommandResult> greetingCmdHandler;
 
     @GetMapping(value = "/")
     public String home() {
@@ -51,16 +50,5 @@ public class GreetingController {
         logger.info(qry);
 
         return greetingQryHandler.execute(qry);
-    }
-
-    @PostMapping(value = "/addGreeting",
-            produces = "application/json")
-    public
-    @ResponseBody
-    AddGreetingCommandResult addGreeting(@RequestBody AddGreetingCommand cmd) {
-
-        logger.error(cmd);
-
-        return greetingCmdHandler.execute(cmd);
     }
 }
