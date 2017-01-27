@@ -1,12 +1,13 @@
 package com.springdemo.greeting.repositories;
 
+import com.vsolv.appframework.repository.DataRepository;
+import org.springframework.stereotype.Component;
+
 import java.util.Calendar;
 
-/**
- * Created by Mirage on 27/1/17.
- */
-public class TimeRepository {
-    String getServerTime()
+@Component
+public class TimeRepository implements DataRepository {
+    public String getServerTime()
     {
         String timeStamp = Calendar.getInstance().getTime().toString();
         return timeStamp;

@@ -1,7 +1,7 @@
 package com.springdemo.greeting.contracts;
 
-import com.vsolv.appframework.GetJsonRequestParam;
 import com.vsolv.appframework.cqrs.query.QueryHandler;
+import com.vsolv.appframework.http.request.GetJsonRequestParam;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class GreetingController {
     private final Logger logger = LogManager.getRootLogger();
 
     @Autowired
-    private QueryHandler<GreetingQuery, GreetingQueryResult> queryHandler;
+    private QueryHandler<GreetingQuery, GreetingQueryResult> greetingQryHandler;
 
     @GetMapping(value = "/")
     public String home() {
@@ -37,7 +37,7 @@ public class GreetingController {
     }
 
     @GetMapping(value = "/greeting",
-            consumes = "application/json",
+            //consumes = "application/json",
             produces = "application/json")
     public
     @ResponseBody
@@ -45,19 +45,7 @@ public class GreetingController {
 
         logger.info(qry);
 
-
-//        String name = "";
-//
-//        if (qry == null) name = "World-1";
-//        else if (qry.getName() == null) name = "World-2";
-//        else name = qry.getName();
-//
-//        String timeStamp = Calendar.getInstance().getTime().toString();
-//        String responseData = "Hello " + name + " " + qry.getAddress().getStreet() + "! - " + timeStamp;
-//
-//        return new GreetingQueryResult (responseData);
-
-        return (GreetingQueryResult) queryHandler.execute(qry);
+        return greetingQryHandler.execute(qry);
     }
 
 }

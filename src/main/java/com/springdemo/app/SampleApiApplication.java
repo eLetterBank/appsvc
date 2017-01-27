@@ -1,6 +1,6 @@
 package com.springdemo.app;
 
-import com.vsolv.appframework.GetJsonArgumentResolver;
+import com.vsolv.appframework.http.request.GetJsonArgumentResolver;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
