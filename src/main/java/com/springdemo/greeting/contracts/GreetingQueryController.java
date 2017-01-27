@@ -25,7 +25,7 @@ public class GreetingQueryController {
 
 
     @GetMapping(value = "/")
-    public String home() {
+    public String serviceHealth() {
 
         logger.debug("This is a debug message");
         logger.info("This is an info message");
@@ -38,16 +38,15 @@ public class GreetingQueryController {
         logger.info("Time Stamp : " + timeStamp);
         logger.info("Generate response with server time stamp");
 
-        return "{\"data\":\"Hello Docker World! - " + timeStamp + "\"}";
+        return "{\"data\":\"Hello World! From: " + this.getClass().getName() + " - " + timeStamp + "\"}";
     }
 
     @GetMapping(value = "/greeting",
             produces = "application/json")
-    public
-    @ResponseBody
+    public @ResponseBody
     GreetingQueryResult greeting(@GetJsonRequestParam GreetingQuery qry) {
 
-        logger.info(qry);
+        logger.debug(qry);
 
         return greetingQryHandler.execute(qry);
     }

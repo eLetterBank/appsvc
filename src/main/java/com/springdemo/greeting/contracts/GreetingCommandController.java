@@ -8,6 +8,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Calendar;
+
 @RestController
 @RequestMapping("/api/cmd")
 public class GreetingCommandController {
@@ -16,13 +18,19 @@ public class GreetingCommandController {
     @Autowired
     private CommandHandler<AddGreetingCommand, AddGreetingCommandResult> greetingCmdHandler;
 
+    @GetMapping(value = "/")
+    public String serviceHealth() {
+        String timeStamp = Calendar.getInstance().getTime().toString();
+        return "{\"data\":\"Hello World! From: " + this.getClass().getName() + " - " + timeStamp + "\"}";
+    }
+
     @PostMapping(value = "/addGreeting",
             produces = "application/json")
     public
     @ResponseBody
     AddGreetingCommandResult addGreeting(@RequestBody AddGreetingCommand cmd) {
 
-        logger.error(cmd);
+        logger.debug(cmd);
 
         return greetingCmdHandler.execute(cmd);
     }
