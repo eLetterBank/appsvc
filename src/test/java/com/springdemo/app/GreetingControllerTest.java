@@ -1,6 +1,6 @@
 package com.springdemo.app;
 
-import com.springdemo.contracts.GreetingController;
+import com.springdemo.greeting.contracts.GreetingQueryController;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(GreetingController.class)
+@WebMvcTest(GreetingQueryController.class)
 @AutoConfigureMockMvc
 public class GreetingControllerTest {
 
