@@ -25,8 +25,8 @@ public class GreetingControllerTest {
 
     @Test
     public void getHome() throws Exception {
-        String expectedData = "Hello Docker World!";
-        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
+        String expectedData = "Hello World!";
+        mvc.perform(MockMvcRequestBuilders.get("/api/qry/").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.data", Matchers.containsString(expectedData)));
     }
