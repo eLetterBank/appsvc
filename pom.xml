@@ -70,11 +70,14 @@
 			<scope>provided</scope>
 		</dependency>
 
+
 		<dependency>
 			<groupId>com.vsolv.appframework</groupId>
 			<artifactId>vsolv-appframework</artifactId>
 			<version>1.0</version>
+			<!--<type>pom</type>-->
 		</dependency>
+
 	</dependencies>
 
 	<build>
