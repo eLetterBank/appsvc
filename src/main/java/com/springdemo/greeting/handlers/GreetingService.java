@@ -15,8 +15,9 @@ class GreetingService implements QueryHandler<GreetingQuery, GreetingQueryResult
 
     @Override
     public GreetingQueryResult execute(GreetingQuery qry) {
-        String timeStamp = timeRepo.getServerTime().toString();
-        String responseData = "Hello " + qry.getName() + " " + qry.getAddress().getStreet() + "! - " + timeStamp;
+        String responseData = "Hello " + qry.getName() + " "
+                + qry.getAddress().getStreet() + "! - "
+                + timeRepo.getServerTime().toString();
 
         return new GreetingQueryResult(responseData);
     }

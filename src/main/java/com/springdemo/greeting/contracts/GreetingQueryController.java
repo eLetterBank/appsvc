@@ -23,22 +23,15 @@ public class GreetingQueryController {
     @Autowired
     private QueryHandler<GreetingQuery, GreetingQueryResult> greetingQryHandler;
 
-
     @GetMapping(value = "/")
     public String serviceHealth() {
-
         logger.debug("This is a debug message");
         logger.info("This is an info message");
         logger.warn("This is a warn message");
         logger.error("This is an error message");
         logger.fatal("This is a fatal message");
 
-        String timeStamp = Calendar.getInstance().getTime().toString();
-
-        logger.info("Time Stamp : " + timeStamp);
-        logger.info("Generate response with server time stamp");
-
-        return "{\"data\":\"Okay! From " + this.getClass().getName() + " - " + timeStamp + "\"}";
+        return "{\"data\":\"Okay! From " + this.getClass().getName() + " - " + Calendar.getInstance().getTime().toString() + "\"}";
     }
 
     @GetMapping(value = "/greeting",

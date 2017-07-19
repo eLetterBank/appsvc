@@ -20,18 +20,15 @@ public class GreetingCommandController {
 
     @GetMapping(value = "/")
     public String serviceHealth() {
-        String timeStamp = Calendar.getInstance().getTime().toString();
-        return "{\"data\":\"Okay! From " + this.getClass().getName() + " - " + timeStamp + "\"}";
+        return "{\"data\":\"Okay! From " + this.getClass().getName() + " - "
+                + Calendar.getInstance().getTime().toString() + "\"}";
     }
 
     @PostMapping(value = "/addGreeting",
             produces = "application/json")
-    public
-    @ResponseBody
+    public @ResponseBody
     AddGreetingCommandResult addGreeting(@RequestBody AddGreetingCommand cmd) {
-
         logger.debug(cmd);
-
         return greetingCmdHandler.execute(cmd);
     }
 }

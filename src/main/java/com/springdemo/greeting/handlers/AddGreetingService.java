@@ -15,8 +15,10 @@ class AddGreetingService implements CommandHandler<AddGreetingCommand, AddGreeti
 
     @Override
     public AddGreetingCommandResult execute(AddGreetingCommand cmd) {
-        String timeStamp = timeRepo.getServerTime().toString();
-        String responseData = "Hello " + cmd.getName() + " " + cmd.getAddress().getStreet() + "! - " + timeStamp;
+        String responseData = "Hello " + cmd.getName() + " "
+                + cmd.getAddress().getStreet()
+                + "! - "
+                + timeRepo.getServerTime().toString();
 
         return new AddGreetingCommandResult(responseData);
     }
