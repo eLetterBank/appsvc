@@ -9,7 +9,6 @@ import java.util.Calendar;
 public class TimeRepository implements DataRepository {
     public String getServerTime()
     {
-        String timeStamp = Calendar.getInstance().getTime().toString();
-        return timeStamp;
+        return (Calendar.getInstance().getTime().toString());
     }
 }
