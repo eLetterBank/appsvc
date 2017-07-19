@@ -2,7 +2,7 @@ language: java
 sudo: false
 install: true
 addons:
-  organization: "eLetterBank"
+  organization: "eletterbank-github"
   sonarcloud:
     token:
       secure: "7910b7f68a96415b1da64e08c6eb0a352855417c"
