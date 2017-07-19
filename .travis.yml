@@ -3,6 +3,7 @@ sudo: false
 install: true
 addons:
   sonarcloud:
+    organization: "eletterbank-github"
     token:
       secure: "a2e1cdf4fa89f69d024fcdafbcc11c6bbbd15979"
 jdk:
