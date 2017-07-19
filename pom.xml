@@ -144,6 +144,31 @@
 				</plugins>
 			</build>
 		</profile>
+		<profile>
+			<repositories>
+				<repository>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+					<id>bintray-eletterbank-appfw</id>
+					<name>bintray</name>
+					<url>http://dl.bintray.com/eletterbank/appfw</url>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+					<id>bintray-eletterbank-appfw</id>
+					<name>bintray-plugins</name>
+					<url>http://dl.bintray.com/eletterbank/appfw</url>
+				</pluginRepository>
+			</pluginRepositories>
+			<id>bintray</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
 	</profiles>
-
 </project>
