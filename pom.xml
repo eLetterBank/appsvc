@@ -97,7 +97,8 @@
 	</build>
 
 	<profiles>
-		<profile>
+		<!--
+        <profile>
 			<id>sonar-coverage</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -144,7 +145,7 @@
 				</plugins>
 			</build>
 		</profile>
-
+        -->
 		<profile>
 			<repositories>
 				<repository>
