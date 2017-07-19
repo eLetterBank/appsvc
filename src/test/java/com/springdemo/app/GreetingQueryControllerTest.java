@@ -1,4 +1,3 @@
-//package com.springdemo.greeting.contracts;
 package com.springdemo.app;
 
 import com.springdemo.greeting.contracts.GreetingQueryController;
