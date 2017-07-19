@@ -13,8 +13,8 @@ class GreetingService implements QueryHandler<GreetingQuery, GreetingQueryResult
     @Autowired
     private TimeRepository timeRepo;
 
+    @Override
     public GreetingQueryResult execute(GreetingQuery qry) {
-
         String timeStamp = timeRepo.getServerTime().toString();
         String responseData = "Hello " + qry.getName() + " " + qry.getAddress().getStreet() + "! - " + timeStamp;
 

@@ -1,6 +1,7 @@
+//package com.springdemo.greeting.contracts;
 package com.springdemo.app;
 
-import com.springdemo.greeting.contracts.GreetingQueryController;
+import com.springdemo.greeting.contracts.GreetingCommandController;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,17 +17,17 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(GreetingQueryController.class)
+@WebMvcTest(GreetingCommandControllerTest.class)
 @AutoConfigureMockMvc
-public class GreetingControllerTest {
+public class GreetingCommandControllerTest {
 
     @Autowired
     private MockMvc mvc;
 
     @Test
-    public void getHome() throws Exception {
+    public void getHomeTestReturnsOk() throws Exception {
         String expectedData = "Hello World!";
-        mvc.perform(MockMvcRequestBuilders.get("/api/qry/").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/api/cmd/").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.data", Matchers.containsString(expectedData)));
     }
