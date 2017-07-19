@@ -38,7 +38,7 @@ public class GreetingQueryController {
         logger.info("Time Stamp : " + timeStamp);
         logger.info("Generate response with server time stamp");
 
-        return "{\"data\":\"Hello World! From " + this.getClass().getName() + " - " + timeStamp + "\"}";
+        return "{\"data\":\"Okay! From " + this.getClass().getName() + " - " + timeStamp + "\"}";
     }
 
     @GetMapping(value = "/greeting",

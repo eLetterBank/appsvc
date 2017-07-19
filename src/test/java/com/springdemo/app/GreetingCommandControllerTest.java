@@ -25,8 +25,8 @@ public class GreetingCommandControllerTest {
     private MockMvc mvc;
 
     @Test
-    public void getHomeTestReturnsOk() throws Exception {
-        String expectedData = "Hello World!";
+    public void serviceHealthTestReturnsOk() throws Exception {
+        String expectedData = "Okay!";
         mvc.perform(MockMvcRequestBuilders.get("/api/cmd/").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.data", Matchers.containsString(expectedData)));
