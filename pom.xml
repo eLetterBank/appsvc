@@ -78,6 +78,12 @@
 			<!--<type>pom</type>-->
 		</dependency>
 
+		<dependency>
+			<groupId>com.openpojo</groupId>
+			<artifactId>openpojo</artifactId>
+			<version>0.8.6</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

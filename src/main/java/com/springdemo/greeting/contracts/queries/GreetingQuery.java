@@ -4,15 +4,15 @@ import com.springdemo.greeting.contracts.shared.Address;
 import com.vsolv.appframework.cqrs.query.BaseQuery;
 
 public class GreetingQuery extends BaseQuery {
-    private String name;
-    private Address address;
-
-    public Address getAddress() {
-        return address;
-    }
+    private String name = null;
+    private Address address = null;
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Address getAddress() {
+        return this.address;
     }
 
     public void setName(String name) {
