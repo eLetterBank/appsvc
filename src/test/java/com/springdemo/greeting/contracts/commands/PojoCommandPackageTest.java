@@ -1,4 +1,4 @@
-package com.springdemo.greeting.contracts.shared;
+package com.springdemo.greeting.contracts.commands;
 
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.impl.PojoClassFactory;
@@ -14,12 +14,12 @@ import org.junit.Test;
 
 import java.util.List;
 
-public class PojoSharedPackageTest {
+public class PojoCommandPackageTest {
     // Configured for expectation, so we know when a class gets added or removed.
-    private static final int EXPECTED_CLASS_COUNT = 2;
+    private static final int EXPECTED_CLASS_COUNT = 3;
 
     // The package to test
-    private static final String POJO_PACKAGE = "com.springdemo.greeting.contracts.shared";
+    private static final String POJO_PACKAGE = "com.springdemo.greeting.contracts.commands";
 
     private List<PojoClass> pojoClasses;
     private Validator validator;
