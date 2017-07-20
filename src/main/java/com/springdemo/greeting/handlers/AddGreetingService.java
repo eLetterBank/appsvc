@@ -1,5 +1,6 @@
 package com.springdemo.greeting.handlers;
 
+import com.springdemo.exceptions.ReturnCodes;
 import com.springdemo.greeting.contracts.commands.AddGreetingCommand;
 import com.springdemo.greeting.contracts.commands.AddGreetingCommandResult;
 import com.springdemo.greeting.repositories.TimeRepository;
@@ -20,6 +21,6 @@ class AddGreetingService implements CommandHandler<AddGreetingCommand, AddGreeti
                 + "! - "
                 + timeRepo.getServerTime().toString();
 
-        return new AddGreetingCommandResult(responseData);
+        return new AddGreetingCommandResult(responseData, ReturnCodes.SUCCESS.getId());
     }
 }
