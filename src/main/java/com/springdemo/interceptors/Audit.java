@@ -1,4 +1,4 @@
-package com.springdemo.Interceptors;
+package com.springdemo.interceptors;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

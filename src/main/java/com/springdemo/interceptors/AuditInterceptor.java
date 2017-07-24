@@ -1,4 +1,4 @@
-package com.springdemo.Interceptors;
+package com.springdemo.interceptors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,21 +20,22 @@ public class AuditInterceptor implements HandlerInterceptor {
         logger.debug("Pre-handle");
         HandlerMethod hm = (HandlerMethod) handler;
         Method method = hm.getMethod();
-        String auditInfo = method.getDeclaringClass().getSimpleName() + ": ";
 
-        if (method.getDeclaringClass().isAnnotationPresent(RestController.class)) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(method.getDeclaringClass().getSimpleName());
+        sb.append(":");
 
-            if (method.isAnnotationPresent(Audit.class)) {
+        if (method.getDeclaringClass().isAnnotationPresent(RestController.class) &&
+                method.isAnnotationPresent(Audit.class)) {
+            logger.debug(method.getAnnotation(Audit.class).value());
 
-                logger.debug(method.getAnnotation(Audit.class).value());
-
-                for (int i = 0; i < method.getParameterCount(); i++) {
-                    auditInfo = auditInfo + method.getParameters()[i].getType().getSimpleName() + " | ";
-                }
-
-                request.setAttribute("AUDIT_INFO", auditInfo);
-                request.setAttribute("STARTTIME", System.currentTimeMillis());
+            for (int i = 0; i < method.getParameterCount(); i++) {
+                sb.append(method.getParameters()[i].getType().getSimpleName());
+                sb.append(" | ");
             }
+
+            request.setAttribute("AUDITINFO", sb.toString());
+            request.setAttribute("STARTTIME", System.currentTimeMillis());
         }
         return true;
     }
@@ -45,17 +46,17 @@ public class AuditInterceptor implements HandlerInterceptor {
         HandlerMethod hm = (HandlerMethod) handler;
         Method method = hm.getMethod();
 
-        String auditInfo = ((String) request.getAttribute("AUDIT_INFO"));
+        StringBuilder sb = new StringBuilder();
+        sb.append(request.getAttribute("AUDITINFO"));
 
-        if (method.getDeclaringClass().isAnnotationPresent(RestController.class)) {
-            if (method.isAnnotationPresent(Audit.class)) {
-                logger.debug(method.getAnnotation(Audit.class).value());
+        if (method.getDeclaringClass().isAnnotationPresent(RestController.class) &&
+                method.isAnnotationPresent(Audit.class)) {
+            logger.debug(method.getAnnotation(Audit.class).value());
 
-                auditInfo = auditInfo + method.getReturnType().getSimpleName();
+            sb.append(method.getReturnType().getSimpleName());
 
-                request.setAttribute("AUDIT_INFO", auditInfo);
-                request.setAttribute("ENDTIME", System.currentTimeMillis());
-            }
+            request.setAttribute("AUDITINFO", sb.toString());
+            request.setAttribute("ENDTIME", System.currentTimeMillis());
         }
     }
 
@@ -67,7 +68,7 @@ public class AuditInterceptor implements HandlerInterceptor {
         if (method.isAnnotationPresent(Audit.class)) {
             logger.debug(method.getAnnotation(Audit.class).value());
 
-            logger.warn(method.getAnnotation(Audit.class).value() + ": " + request.getAttribute("AUDIT_INFO"));
+            logger.warn(method.getAnnotation(Audit.class).value() + ": " + request.getAttribute("AUDITINFO"));
             logger.debug("Total Took:" + ((Long) request.getAttribute("ENDTIME") - (Long) request.getAttribute("STARTTIME")));
         }
     }

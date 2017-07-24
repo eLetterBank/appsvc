@@ -1,6 +1,6 @@
 package com.springdemo.app;
 
-import com.springdemo.Interceptors.AuditInterceptor;
+import com.springdemo.interceptors.AuditInterceptor;
 import com.vsolv.appframework.http.request.GetJsonArgumentResolver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -75,7 +75,6 @@ public class SampleApiApplication extends SpringBootServletInitializer {
         @Override
         public void addInterceptors(InterceptorRegistry registry) {
             registry.addInterceptor(new AuditInterceptor());
-            //registry.addInterceptor(new TransactionInterceptor()).addPathPatterns("/person/save/*");
         }
     }
 
