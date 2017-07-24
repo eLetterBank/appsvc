@@ -109,5 +109,23 @@ public class GreetingQueryControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(MockMvcResultHandlers.print());
+
+        mvc.perform(MockMvcRequestBuilders.get("/api/qry/greeting")
+                .param("qry", greetingQry)
+                .accept(MediaType.APPLICATION_JSON)
+                .header("x-vsolv-nonce", "v11")
+                .header("x-vsolv-signature", "v2"))
+                .andExpect(status().isBadRequest())
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andDo(MockMvcResultHandlers.print());
+
+        mvc.perform(MockMvcRequestBuilders.get("/api/qry/greeting")
+                .param("qry", greetingQry)
+                .accept(MediaType.APPLICATION_JSON)
+                .header("x-vsolv-nonce", "v1")
+                .header("x-vsolv-signature", "v22"))
+                .andExpect(status().isBadRequest())
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andDo(MockMvcResultHandlers.print());
     }
 }
