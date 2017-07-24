@@ -1,12 +1,20 @@
 @startuml
-title Sequence Diagram
+title Sequence Diagram Notations
 
 actor user
 participant Staff as Alice
 participant System as Bob
 
+skinparam sequence {
+    ActorFontName Arial
+    ActorFontSize 11
 
+    ParticipantFontName Arial
+    ParticipantFontSize 11
 
+    ArrowFontName Arial
+    ArrowFontSize 11
+}
 
 user -> Alice: Hai!
 activate Alice

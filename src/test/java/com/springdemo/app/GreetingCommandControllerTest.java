@@ -1,4 +1,3 @@
-//package com.springdemo.greeting.contracts;
 package com.springdemo.app;
 
 import com.springdemo.greeting.contracts.GreetingCommandController;
@@ -28,7 +27,10 @@ public class GreetingCommandControllerTest {
     @Test
     public void serviceHealthTestReturnsOk() throws Exception {
         String expectedData = "Okay!";
-        mvc.perform(MockMvcRequestBuilders.get("/api/cmd/").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/api/cmd/")
+                .accept(MediaType.APPLICATION_JSON)
+                .header("x-vsolv-nonce", "v1")
+                .header("x-vsolv-signature", "v2"))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.data", Matchers.containsString(expectedData)));
     }
@@ -39,6 +41,8 @@ public class GreetingCommandControllerTest {
         String greetingCmd = "{\"name\":\"TestMe\",\"address\":{\"street\":\"Hamlin St.\"}}";
         mvc.perform(MockMvcRequestBuilders.post("/api/cmd/addGreeting")
                 .contentType(MediaType.APPLICATION_JSON)
+                .header("x-vsolv-nonce", "v1")
+                .header("x-vsolv-signature", "v2")
                 .content(greetingCmd))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))

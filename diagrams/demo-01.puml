@@ -1,0 +1,8 @@
+@startuml
+actor PayRollCron
+participant PayDayTransaction
+participant PayRoll
+participant PayRollDatabase
+participant Employee
+participant PayCheck
+@enduml

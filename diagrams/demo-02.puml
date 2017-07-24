@@ -1,0 +1,62 @@
+@startuml
+
+'''''''''''''''''''''''''''''''''''''''''''''''''
+' define diagram participants
+'''''''''''''''''''''''''''''''''''''''''''''''''
+actor PayRollCron
+participant PayDayTransaction
+participant PayRoll
+participant PayRollDatabase
+participant Employee
+participant PayCheck
+
+
+skinparam sequence {
+    ActorFontName Arial
+    ActorFontSize 11
+
+    ParticipantFontName Arial
+    ParticipantFontSize 11
+
+    ArrowFontName Arial
+    ArrowFontSize 11
+}
+
+'''''''''''''''''''''''''''''''''''''''''''''''''
+' describe sequence of events
+'''''''''''''''''''''''''''''''''''''''''''''''''
+PayRollCron->PayDayTransaction: initialise(today)
+
+PayRollCron->PayDayTransaction: execute
+
+activate PayDayTransaction
+
+PayDayTransaction->PayRoll: get
+
+PayRoll->PayRollDatabase: new
+
+activate PayRollDatabase
+PayRollDatabase-->PayDayTransaction
+
+PayDayTransaction->PayRollDatabase: find_employees
+PayRollDatabase-->PayDayTransaction: employees
+
+deactivate PayRollDatabase
+
+PayDayTransaction->PayDayTransaction: for each employee e
+activate PayDayTransaction
+PayDayTransaction->Employee: pay_date(date) ?
+Employee-->PayDayTransaction: true
+PayDayTransaction->Employee: calculate_pay(date)
+Employee-->PayDayTransaction: amount
+PayDayTransaction->PayCheck: new (amount)
+PayCheck-->PayRoll: check
+
+PayDayTransaction->Employee: send_pay(check)
+
+deactivate PayDayTransaction
+
+PayDayTransaction-->PayRollCron:
+
+deactivate PayDayTransaction
+@enduml

@@ -29,7 +29,9 @@ public class GreetingQueryControllerTest {
     public void serviceHealthTestReturnsOk() throws Exception {
         String expectedData = "Okay!";
         mvc.perform(MockMvcRequestBuilders.get("/api/qry/")
-                .accept(MediaType.APPLICATION_JSON))
+                .accept(MediaType.APPLICATION_JSON)
+                .header("x-vsolv-nonce", "v1")
+                .header("x-vsolv-signature", "v2"))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.data", Matchers.containsString(expectedData)));
     }
@@ -40,7 +42,9 @@ public class GreetingQueryControllerTest {
         String greetingQry = "{\"name\":\"TestMe\",\"address\":{\"street\":\"Hamlin St.\"}}";
         mvc.perform(MockMvcRequestBuilders.get("/api/qry/greeting")
                 .param("qry", greetingQry)
-                .accept(MediaType.APPLICATION_JSON))
+                .accept(MediaType.APPLICATION_JSON)
+                .header("x-vsolv-nonce", "v1")
+                .header("x-vsolv-signature", "v2"))
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.content").value(Matchers.containsString(expectedData)))
