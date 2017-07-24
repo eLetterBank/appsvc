@@ -54,6 +54,35 @@ public class GreetingQueryControllerTest {
     }
 
     @Test
+    public void serviceGreetingTestReturnsInvalidRequestForNoQryInput() throws Exception {
+        String greetingQry = "{}";
+        mvc.perform(MockMvcRequestBuilders.get("/api/qry/greeting")
+                .param("qry", greetingQry)
+                .accept(MediaType.APPLICATION_JSON)
+                .header("x-vsolv-nonce", "v1")
+                .header("x-vsolv-signature", "v2"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.returnCode").value(ReturnCodes.INVALID_REQUEST.getId()))
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
+    public void serviceGreetingTestReturnsInvalidRequestForPartialQryInput() throws Exception {
+        String expectedData = "TestMe";
+        String greetingQry = "{\"address\":{\"street\":\"Hamlin St.\"}}";
+        mvc.perform(MockMvcRequestBuilders.get("/api/qry/greeting")
+                .param("qry", greetingQry)
+                .accept(MediaType.APPLICATION_JSON)
+                .header("x-vsolv-nonce", "v1")
+                .header("x-vsolv-signature", "v2"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.returnCode").value(ReturnCodes.INVALID_REQUEST.getId()))
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
     public void serviceGreetingTestReturnsBadRequest() throws Exception {
         String expectedData = "TestMe";
         String greetingQry = "{\"name\":\"TestMe\",\"address\":{\"street\":\"Hamlin St.\"}}";

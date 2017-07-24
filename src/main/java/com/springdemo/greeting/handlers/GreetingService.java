@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 class GreetingService implements QueryHandler<GreetingQuery, GreetingQueryResult> {
 
-    private final Logger logger = LogManager.getRootLogger();
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Autowired
     private TimeRepository timeRepo;
