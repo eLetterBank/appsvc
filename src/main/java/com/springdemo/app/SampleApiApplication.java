@@ -1,5 +1,6 @@
 package com.springdemo.app;
 
+import com.springdemo.Interceptors.AuditInterceptor;
 import com.vsolv.appframework.http.request.GetJsonArgumentResolver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.annotation.PostConstruct;
@@ -66,5 +68,15 @@ public class SampleApiApplication extends SpringBootServletInitializer {
         public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
             argumentResolvers.add(new GetJsonArgumentResolver());
         }
+
+        /**
+         * Enable Audit
+         */
+        @Override
+        public void addInterceptors(InterceptorRegistry registry) {
+            registry.addInterceptor(new AuditInterceptor());
+            //registry.addInterceptor(new TransactionInterceptor()).addPathPatterns("/person/save/*");
+        }
     }
+
 }

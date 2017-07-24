@@ -39,11 +39,6 @@ public class ApiFilter extends GenericFilterBean {
         try
         {
             filterLogger.info(reqHeaders);
-
-            filterLogger.info("I'm here....1");
-            filterLogger.debug(applicationProperties.toString());
-
-            filterLogger.info("I'm here....2");
             filterLogger.debug(applicationProperties.getHttpHeader().getvSolvNonce());
             filterLogger.debug(applicationProperties.getHttpHeader().getvSolvSignature());
 

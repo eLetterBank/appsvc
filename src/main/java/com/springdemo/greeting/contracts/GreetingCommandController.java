@@ -1,5 +1,6 @@
 package com.springdemo.greeting.contracts;
 
+import com.springdemo.Interceptors.Audit;
 import com.springdemo.greeting.contracts.commands.AddGreetingCommand;
 import com.springdemo.greeting.contracts.commands.AddGreetingCommandResult;
 import com.vsolv.appframework.cqrs.command.CommandHandler;
@@ -18,12 +19,14 @@ public class GreetingCommandController {
     @Autowired
     private CommandHandler<AddGreetingCommand, AddGreetingCommandResult> greetingCmdHandler;
 
+    @Audit("HEALTHCHECK")
     @GetMapping(value = "/")
     public String serviceHealth() {
         return "{\"data\":\"Okay! From " + this.getClass().getName() + " - "
                 + Calendar.getInstance().getTime().toString() + "\"}";
     }
 
+    @Audit("ADD_GREETING")
     @PostMapping(value = "/addGreeting",
             produces = "application/json")
     public @ResponseBody

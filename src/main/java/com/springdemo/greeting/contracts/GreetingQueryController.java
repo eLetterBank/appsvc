@@ -1,5 +1,6 @@
 package com.springdemo.greeting.contracts;
 
+import com.springdemo.Interceptors.Audit;
 import com.springdemo.greeting.contracts.queries.GreetingQuery;
 import com.springdemo.greeting.contracts.queries.GreetingQueryResult;
 import com.vsolv.appframework.cqrs.query.QueryHandler;
@@ -14,15 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Calendar;
 
+
 @RestController
 @RequestMapping("/api/qry")
 public class GreetingQueryController {
 
-    private final Logger logger = LogManager.getRootLogger();
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Autowired
     private QueryHandler<GreetingQuery, GreetingQueryResult> greetingQryHandler;
 
+    @Audit("HEALTHCHECK")
     @GetMapping(value = "/")
     public String serviceHealth() {
         logger.debug("This is a debug message");
@@ -34,12 +37,13 @@ public class GreetingQueryController {
         return "{\"data\":\"Okay! From " + this.getClass().getName() + " - " + Calendar.getInstance().getTime().toString() + "\"}";
     }
 
+    @Audit("GREETING")
     @GetMapping(value = "/greeting",
             produces = "application/json")
     public @ResponseBody
     GreetingQueryResult greeting(@GetJsonRequestParam GreetingQuery qry) {
 
-        logger.debug(qry);
+        logger.info(qry.getClass().getSimpleName());
 
         return greetingQryHandler.execute(qry);
     }
