@@ -23,7 +23,7 @@ import java.util.Map;
 public class ApiFilter extends GenericFilterBean {
     private final Logger filterLogger = LogManager.getLogger(this.getClass());
 
-    private static final String CONTENT_TYPE = "application/json";
+    private static final String CONTENT_TYPE = "application/json;charset=UTF-8";
 
     @Autowired
     private ApplicationProperties applicationProperties = null;

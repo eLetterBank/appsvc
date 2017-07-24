@@ -8,17 +8,17 @@ import org.springframework.validation.annotation.Validated;
 @Configuration
 @ConfigurationProperties("app")
 public class ApplicationProperties {
-    private HttpHeader httpHeader;
+    private httpHeader httpHeader;
 
-    public ApplicationProperties.HttpHeader getHttpHeader() {
+    public ApplicationProperties.httpHeader getHttpHeader() {
         return httpHeader;
     }
 
-    public void setHttpHeader(ApplicationProperties.HttpHeader httpHeader) {
+    public void setHttpHeader(ApplicationProperties.httpHeader httpHeader) {
         this.httpHeader = httpHeader;
     }
 
-    public static class HttpHeader  {
+    public static class httpHeader  {
         private String vSolvNonce;
         private String vSolvSignature;
 

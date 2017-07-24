@@ -1,5 +1,6 @@
 package com.springdemo.app;
 
+import com.springdemo.exceptions.ReturnCodes;
 import com.springdemo.greeting.contracts.GreetingQueryController;
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -49,6 +50,35 @@ public class GreetingQueryControllerTest {
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.content").value(Matchers.containsString(expectedData)))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.returnCode").value(0))
+                .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
+    public void serviceGreetingTestReturnsBadRequest() throws Exception {
+        String expectedData = "TestMe";
+        String greetingQry = "{\"name\":\"TestMe\",\"address\":{\"street\":\"Hamlin St.\"}}";
+
+        mvc.perform(MockMvcRequestBuilders.get("/api/qry/greeting")
+                .param("qry", greetingQry)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andDo(MockMvcResultHandlers.print());
+
+        mvc.perform(MockMvcRequestBuilders.get("/api/qry/greeting")
+                .param("qry", greetingQry)
+                .accept(MediaType.APPLICATION_JSON)
+                .header("x-vsolv-nonce", "v1"))
+                .andExpect(status().isBadRequest())
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andDo(MockMvcResultHandlers.print());
+
+        mvc.perform(MockMvcRequestBuilders.get("/api/qry/greeting")
+                .param("qry", greetingQry)
+                .accept(MediaType.APPLICATION_JSON)
+                .header("x-vsolv-signature", "v2"))
+                .andExpect(status().isBadRequest())
+                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andDo(MockMvcResultHandlers.print());
     }
 }
