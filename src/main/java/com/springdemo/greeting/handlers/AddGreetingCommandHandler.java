@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-class AddGreetingService implements CommandHandler<AddGreetingCommand, AddGreetingCommandResult> {
+class AddGreetingCommandHandler implements CommandHandler<AddGreetingCommand, AddGreetingCommandResult> {
 
     @Autowired
     private TimeRepository timeRepo;

@@ -6,7 +6,7 @@
     <groupId>com.springdemo</groupId>
     <artifactId>springDemo</artifactId>
     <version>0.0.3</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>com.springdemo.app</name>
     <description>Demo project for Spring Boot</description>

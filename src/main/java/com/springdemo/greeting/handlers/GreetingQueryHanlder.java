@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-class GreetingService implements QueryHandler<GreetingQuery, GreetingQueryResult> {
+class GreetingQueryHanlder implements QueryHandler<GreetingQuery, GreetingQueryResult> {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 

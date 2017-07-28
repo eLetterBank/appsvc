@@ -1,6 +1,6 @@
 package com.springdemo.greeting.contracts.commands;
 
-import com.springdemo.greeting.contracts.shared.Address;
+import com.springdemo.shared.models.Address;
 import com.vsolv.appframework.cqrs.command.BaseCommand;
 
 public class AddGreetingCommand extends BaseCommand {

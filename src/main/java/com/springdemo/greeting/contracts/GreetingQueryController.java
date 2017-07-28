@@ -25,7 +25,7 @@ public class GreetingQueryController {
     @Autowired
     private QueryHandler<GreetingQuery, GreetingQueryResult> greetingQryHandler;
 
-    @Audit("HEALTHCHECK")
+    @Audit("HEALTH-CHECK")
     @GetMapping(value = "/")
     public String serviceHealth() {
         logger.debug("This is a debug message");

@@ -1,4 +1,4 @@
-package com.springdemo.greeting.contracts.shared;
+package com.springdemo.shared.models;
 
 import com.openpojo.reflection.PojoClass;
 import com.openpojo.reflection.impl.PojoClassFactory;
@@ -19,7 +19,7 @@ public class PojoSharedPackageTest {
     private static final int EXPECTED_CLASS_COUNT = 2;
 
     // The package to test
-    private static final String POJO_PACKAGE = "com.springdemo.greeting.contracts.shared";
+    private static final String POJO_PACKAGE = "com.springdemo.shared.models";
 
     private List<PojoClass> pojoClasses;
     private Validator validator;

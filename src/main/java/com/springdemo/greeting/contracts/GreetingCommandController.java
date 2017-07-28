@@ -19,14 +19,14 @@ public class GreetingCommandController {
     @Autowired
     private CommandHandler<AddGreetingCommand, AddGreetingCommandResult> greetingCmdHandler;
 
-    @Audit("HEALTHCHECK")
+    @Audit("HEALTH-CHECK")
     @GetMapping(value = "/")
     public String serviceHealth() {
         return "{\"data\":\"Okay! From " + this.getClass().getName() + " - "
                 + Calendar.getInstance().getTime().toString() + "\"}";
     }
 
-    @Audit("ADD_GREETING")
+    @Audit("ADD-GREETING")
     @PostMapping(value = "/addGreeting",
             produces = "application/json")
     public @ResponseBody

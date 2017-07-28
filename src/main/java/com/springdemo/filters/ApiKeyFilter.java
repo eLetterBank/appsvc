@@ -19,11 +19,11 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
-public class ApiFilter extends GenericFilterBean {
-    private final Logger filterLogger = LogManager.getLogger(this.getClass());
+import static com.springdemo.shared.constants.Constant.*;
 
-    private static final String CONTENT_TYPE = "application/json;charset=UTF-8";
+@Component
+public class ApiKeyFilter extends GenericFilterBean {
+    private static Logger filterLogger = LogManager.getLogger(ApiKeyFilter.class);
 
     @Autowired
     private ApplicationProperties applicationProperties = null;
@@ -35,23 +35,22 @@ public class ApiFilter extends GenericFilterBean {
         HttpServletRequest req = (HttpServletRequest) request;
         Map<String, String> reqHeaders = getHeadersInfo(req);
 
-
         try
         {
             filterLogger.info(reqHeaders);
             filterLogger.debug(applicationProperties.getHttpHeader().getvSolvNonce());
             filterLogger.debug(applicationProperties.getHttpHeader().getvSolvSignature());
 
-            if (req.getHeader("x-vsolv-nonce") == null ||
-                    req.getHeader("x-vsolv-signature") == null) {
+            if (req.getHeader(X_VSOLV_NONCE) == null ||
+                    req.getHeader(X_VSOLV_SIGNATURE) == null) {
                 HttpServletResponse httpResponse = (HttpServletResponse) response;
                 httpResponse.setContentType(CONTENT_TYPE);
                 httpResponse.sendError(HttpServletResponse.SC_BAD_REQUEST,
                         ReturnCodes.MISSING_HEADER_VALUE.getMessage());
                 return;
             }
-            else if (!req.getHeader("x-vsolv-nonce").contentEquals(applicationProperties.getHttpHeader().getvSolvNonce()) ||
-                    !req.getHeader("x-vsolv-signature").contentEquals(applicationProperties.getHttpHeader().getvSolvSignature())) {
+            else if (!req.getHeader(X_VSOLV_NONCE).contentEquals(applicationProperties.getHttpHeader().getvSolvNonce()) ||
+                    !req.getHeader(X_VSOLV_SIGNATURE).contentEquals(applicationProperties.getHttpHeader().getvSolvSignature())) {
                 HttpServletResponse httpResponse = (HttpServletResponse) response;
                 httpResponse.setContentType(CONTENT_TYPE);
                 httpResponse.sendError(HttpServletResponse.SC_BAD_REQUEST,

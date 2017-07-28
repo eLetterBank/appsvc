@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
+import static com.springdemo.shared.constants.Constant.*;
+
 public class AuditInterceptor implements HandlerInterceptor {
 
-    private final Logger logger = LogManager.getLogger(this.getClass());
+    private static final Logger logger = LogManager.getLogger(AuditInterceptor.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -32,10 +34,13 @@ public class AuditInterceptor implements HandlerInterceptor {
             for (int i = 0; i < method.getParameterCount(); i++) {
                 sb.append(method.getParameters()[i].getType().getSimpleName());
                 sb.append(" | ");
+
+                //Read parameter values
+                logger.info(request.getRequestURI());
             }
 
-            request.setAttribute("AUDITINFO", sb.toString());
-            request.setAttribute("STARTTIME", System.currentTimeMillis());
+            request.setAttribute(AUDITINFO, sb.toString());
+            request.setAttribute(STARTTIME, System.currentTimeMillis());
         }
         return true;
     }
@@ -47,7 +52,7 @@ public class AuditInterceptor implements HandlerInterceptor {
         Method method = hm.getMethod();
 
         StringBuilder sb = new StringBuilder();
-        sb.append(request.getAttribute("AUDITINFO"));
+        sb.append(request.getAttribute(AUDITINFO));
 
         if (method.getDeclaringClass().isAnnotationPresent(RestController.class) &&
                 method.isAnnotationPresent(Audit.class)) {
@@ -55,8 +60,8 @@ public class AuditInterceptor implements HandlerInterceptor {
 
             sb.append(method.getReturnType().getSimpleName());
 
-            request.setAttribute("AUDITINFO", sb.toString());
-            request.setAttribute("ENDTIME", System.currentTimeMillis());
+            request.setAttribute(AUDITINFO, sb.toString());
+            request.setAttribute(ENDTIME, System.currentTimeMillis());
         }
     }
 
@@ -66,10 +71,8 @@ public class AuditInterceptor implements HandlerInterceptor {
         HandlerMethod hm = (HandlerMethod) handler;
         Method method = hm.getMethod();
         if (method.isAnnotationPresent(Audit.class)) {
-            logger.debug(method.getAnnotation(Audit.class).value());
-
-            logger.warn(method.getAnnotation(Audit.class).value() + ": " + request.getAttribute("AUDITINFO"));
-            logger.debug("Total Took:" + ((Long) request.getAttribute("ENDTIME") - (Long) request.getAttribute("STARTTIME")));
+            logger.warn(method.getAnnotation(Audit.class).value() + ": " + request.getAttribute(AUDITINFO));
+            logger.debug("Total Took:" + ((Long) request.getAttribute(ENDTIME) - (Long) request.getAttribute(STARTTIME)));
         }
     }
 }

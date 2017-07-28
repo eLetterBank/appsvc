@@ -1,4 +1,4 @@
-package com.springdemo.greeting.contracts.shared;
+package com.springdemo.shared.models;
 
 public class Address {
     private String street = null;
