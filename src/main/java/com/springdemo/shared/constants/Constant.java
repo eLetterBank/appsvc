@@ -1,8 +1,7 @@
 package com.springdemo.shared.constants;
 
 public final class Constant {
-
-    private Constant() {
+    Constant() {
         throw new IllegalStateException("Constant class");
     }
 
