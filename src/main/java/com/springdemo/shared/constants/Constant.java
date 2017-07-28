@@ -1,6 +1,11 @@
 package com.springdemo.shared.constants;
 
 public final class Constant {
+
+    private Constant() {
+        throw new IllegalStateException("Constant class");
+    }
+
     //HTTP header values
     public static final String X_VSOLV_NONCE = "x-vsolv-nonce";
     public static final String X_VSOLV_SIGNATURE = "x-vsolv-signature";
