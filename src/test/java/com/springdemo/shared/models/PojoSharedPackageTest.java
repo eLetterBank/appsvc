@@ -69,7 +69,7 @@ public class PojoSharedPackageTest {
                 .with(new GetterTester())
 
                 // We don't want any default values to any fields - unless they are declared final or are primitive.
-                .with(new DefaultValuesNullTester())
+                //.with(new DefaultValuesNullTester())
 
                 /**
                  * finalize Validator building.

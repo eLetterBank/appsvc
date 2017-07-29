@@ -1,5 +1,7 @@
 package com.springdemo.shared.models;
 
+import sun.invoke.empty.Empty;
+
 import java.time.LocalDateTime;
 
 
@@ -18,17 +20,17 @@ public class AuditEvent {
 
     public AuditEvent()
     {
-        host="";
-        requestId="";
-        sessionId="";
-        name="";
-        serviceContract="";
-        operation="";
-        operationHandler="";
-        request="";
-        response="";
-        requestInTime=null;
-        responseOutTime=null;
+        setHost("");
+        setRequestId("");
+        setSessionId("");
+        setName("");
+        setServiceContract("");
+        setOperation("");
+        setOperationHandler("");
+        setRequest("");
+        setResponse("");
+        setRequestInTime(LocalDateTime.MIN);
+        setResponseOutTime(LocalDateTime.MIN);
     }
 
     @Override
