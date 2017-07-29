@@ -1,9 +1,6 @@
 package com.springdemo.shared.models;
 
-import sun.invoke.empty.Empty;
-
 import java.time.LocalDateTime;
-
 
 public class AuditEvent {
     private String host;
@@ -18,8 +15,7 @@ public class AuditEvent {
     private LocalDateTime requestInTime;
     private LocalDateTime responseOutTime;
 
-    public AuditEvent()
-    {
+    public AuditEvent() {
         setHost("");
         setRequestId("");
         setSessionId("");
@@ -48,7 +44,7 @@ public class AuditEvent {
                 "\", \"requestInTime\":\"" + getRequestInTime().toString() +
                 "\", \"responseOutTime\":\"" + getResponseOutTime().toString() +
                 "\"" +
-               '}';
+                '}';
     }
 
     public String getHost() {
