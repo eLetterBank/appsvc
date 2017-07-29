@@ -2,6 +2,7 @@ package com.springdemo.filters;
 
 import com.springdemo.app.ApplicationProperties;
 import com.springdemo.exceptions.ReturnCodes;
+import com.springdemo.shared.models.ExecutionContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import static com.springdemo.shared.constants.Constant.*;
 
@@ -28,6 +30,9 @@ public class ApiKeyFilter extends GenericFilterBean {
     @Autowired
     private ApplicationProperties applicationProperties = null;
 
+    @Autowired
+    private ExecutionContext executionContext = null;
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
@@ -37,6 +42,13 @@ public class ApiKeyFilter extends GenericFilterBean {
 
         try
         {
+            filterLogger.debug("Set the execution context");
+            this.executionContextBuilder(req);
+            filterLogger.debug("Execution context set");
+
+            filterLogger.debug("RequestID: " + executionContext.getRequestId());
+            filterLogger.debug("SessionID: " + executionContext.getSessionId());
+
             filterLogger.info(reqHeaders);
             filterLogger.debug(applicationProperties.getHttpHeader().getvSolvNonce());
             filterLogger.debug(applicationProperties.getHttpHeader().getvSolvSignature());
@@ -73,7 +85,7 @@ public class ApiKeyFilter extends GenericFilterBean {
 
     private Map<String, String> getHeadersInfo(HttpServletRequest request) {
 
-        Map<String, String> map = new HashMap();
+        Map<String, String> map = new HashMap<String, String>();
 
         Enumeration headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()) {
@@ -83,5 +95,14 @@ public class ApiKeyFilter extends GenericFilterBean {
         }
 
         return map;
+    }
+
+    private void executionContextBuilder(HttpServletRequest req) throws ServletException
+    {
+        if (this.executionContext == null)
+            throw new ServletException(ReturnCodes.MISSING_EXECUTION_CONTEXT.getMessage());
+
+        this.executionContext.setRequestId(UUID.randomUUID().toString());
+        this.executionContext.setSessionId(req.getAuthType());
     }
 }

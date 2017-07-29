@@ -1,6 +1,7 @@
 package com.springdemo.app;
 
 import com.springdemo.interceptors.AuditInterceptor;
+import com.springdemo.shared.models.ExecutionContext;
 import com.vsolv.appframework.http.request.GetJsonArgumentResolver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,8 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
+import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -18,13 +19,15 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import java.util.List;
 
 @SpringBootApplication
 @ComponentScan("com.springdemo")
 public class SampleApiApplication extends SpringBootServletInitializer {
 
-    private final Logger appLogger = LogManager.getLogger(this.getClass());
+    private static final Logger appLogger = LogManager.getLogger(SampleApiApplication.class);
 
     @Autowired
     private ApplicationProperties applicationProperties;
@@ -42,6 +45,7 @@ public class SampleApiApplication extends SpringBootServletInitializer {
         appLogger.debug(applicationProperties.toString());
     }
 
+
     /**
      * Used when run as WAR
      */
@@ -50,8 +54,24 @@ public class SampleApiApplication extends SpringBootServletInitializer {
         return builder.sources(SampleApiApplication.class);
     }
 
-    @Configuration
+    //Create Bean method fot "RequestContextListener"
+    @Bean
+    public RequestContextListener requestContextListener() {
+        return new RequestContextListener();
+    }
+
+    /**
+     * Register a RequestContextListener Bean
+     */
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        super.onStartup(servletContext);
+        servletContext.addListener(requestContextListener());
+    }
+
     @EnableWebMvc
+    @ComponentScan(basePackages = {"com.springdemo"})
+    @Configuration
     public class WebConfig extends WebMvcConfigurerAdapter {
         /**
          * Enable CORS
@@ -69,12 +89,25 @@ public class SampleApiApplication extends SpringBootServletInitializer {
             argumentResolvers.add(new GetJsonArgumentResolver());
         }
 
+        //Create Bean method fot "AuditInterceptor"
+        @Bean
+        public AuditInterceptor auditInterceptor() {
+            return new AuditInterceptor();
+        }
+
         /**
-         * Enable Audit
+         * Add AuditInterceptor
          */
         @Override
         public void addInterceptors(InterceptorRegistry registry) {
-            registry.addInterceptor(new AuditInterceptor());
+            registry.addInterceptor(auditInterceptor());
+        }
+
+        //ExecutionContext per session
+        @Bean
+        @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
+        public ExecutionContext executionContext() {
+            return new ExecutionContext();
         }
     }
 

@@ -1,8 +1,8 @@
 package com.springdemo.greeting.contracts;
 
-import com.springdemo.interceptors.Audit;
 import com.springdemo.greeting.contracts.queries.GreetingQuery;
 import com.springdemo.greeting.contracts.queries.GreetingQueryResult;
+import com.springdemo.interceptors.Audit;
 import com.vsolv.appframework.cqrs.query.QueryHandler;
 import com.vsolv.appframework.http.request.GetJsonRequestParam;
 import org.apache.logging.log4j.LogManager;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Calendar;
-
 
 @RestController
 @RequestMapping("/api/qry")

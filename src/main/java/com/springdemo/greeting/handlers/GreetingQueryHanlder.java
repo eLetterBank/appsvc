@@ -4,6 +4,7 @@ import com.springdemo.exceptions.ReturnCodes;
 import com.springdemo.greeting.contracts.queries.GreetingQuery;
 import com.springdemo.greeting.contracts.queries.GreetingQueryResult;
 import com.springdemo.greeting.repositories.TimeRepository;
+import com.springdemo.shared.models.ExecutionContext;
 import com.vsolv.appframework.cqrs.query.QueryHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,8 +19,17 @@ class GreetingQueryHanlder implements QueryHandler<GreetingQuery, GreetingQueryR
     @Autowired
     private TimeRepository timeRepo;
 
+    @Autowired
+    private ExecutionContext executionContext = null;
+
+
     @Override
     public GreetingQueryResult execute(GreetingQuery qry) {
+
+        if (executionContext == null)
+            return new GreetingQueryResult(ReturnCodes.MISSING_EXECUTION_CONTEXT.getMessage(), ReturnCodes.MISSING_EXECUTION_CONTEXT.getId());
+
+        logger.debug("RequestId: " + executionContext.getRequestId());
 
         if (!isValiedQry(qry)) {
             return new GreetingQueryResult(ReturnCodes.INVALID_REQUEST.getMessage(), ReturnCodes.INVALID_REQUEST.getId());
@@ -37,7 +47,9 @@ class GreetingQueryHanlder implements QueryHandler<GreetingQuery, GreetingQueryR
         String responseData = "Hello " + qry.getName() + " "
                 + (streetName == null ? " - " : streetName)
                 + "! - "
-                + timeRepo.getServerTime().toString();
+                + timeRepo.getServerTime().toString()
+                + " -> "
+                + executionContext.getRequestId();
 
         return new GreetingQueryResult(responseData, ReturnCodes.SUCCESS.getId());
     }
