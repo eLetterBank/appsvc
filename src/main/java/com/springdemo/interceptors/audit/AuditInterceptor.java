@@ -1,5 +1,6 @@
 package com.springdemo.interceptors.audit;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springdemo.exceptions.ReturnCodes;
 import com.springdemo.exceptions.ServiceException;
 import com.springdemo.shared.models.AuditEvent;
