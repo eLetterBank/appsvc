@@ -1,7 +1,9 @@
 package com.springdemo.app;
 
-import com.springdemo.interceptors.AuditInterceptor;
+import com.springdemo.interceptors.audit.AuditInterceptor;
+import com.springdemo.shared.models.AuditEvent;
 import com.springdemo.shared.models.ExecutionContext;
+import com.springdemo.shared.utilities.auditlog.AuditLogger;
 import com.vsolv.appframework.http.request.GetJsonArgumentResolver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -91,7 +93,7 @@ public class SampleApiApplication extends SpringBootServletInitializer {
 
         //Create Bean method fot "AuditInterceptor"
         @Bean
-        public AuditInterceptor auditInterceptor() {
+        AuditInterceptor auditInterceptor() {
             return new AuditInterceptor();
         }
 
@@ -108,6 +110,20 @@ public class SampleApiApplication extends SpringBootServletInitializer {
         @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
         public ExecutionContext executionContext() {
             return new ExecutionContext();
+        }
+
+        //AuditEvent per session
+        @Bean
+        @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
+        public AuditEvent auditEvent() {
+            return new AuditEvent();
+        }
+
+        //AuditLogger per process
+        @Bean
+        @Scope(value = "singleton", proxyMode = ScopedProxyMode.TARGET_CLASS)
+        public AuditLogger auditLog() {
+            return new AuditLogger();
         }
     }
 

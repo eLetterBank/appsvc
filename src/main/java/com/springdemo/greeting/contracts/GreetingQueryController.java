@@ -2,7 +2,7 @@ package com.springdemo.greeting.contracts;
 
 import com.springdemo.greeting.contracts.queries.GreetingQuery;
 import com.springdemo.greeting.contracts.queries.GreetingQueryResult;
-import com.springdemo.interceptors.Audit;
+import com.springdemo.interceptors.audit.Audit;
 import com.vsolv.appframework.cqrs.query.QueryHandler;
 import com.vsolv.appframework.http.request.GetJsonRequestParam;
 import org.apache.logging.log4j.LogManager;

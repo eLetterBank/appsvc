@@ -4,6 +4,7 @@ import com.springdemo.exceptions.ReturnCodes;
 import com.springdemo.greeting.contracts.queries.GreetingQuery;
 import com.springdemo.greeting.contracts.queries.GreetingQueryResult;
 import com.springdemo.greeting.repositories.TimeRepository;
+import com.springdemo.shared.models.AuditEvent;
 import com.springdemo.shared.models.ExecutionContext;
 import com.vsolv.appframework.cqrs.query.QueryHandler;
 import org.apache.logging.log4j.LogManager;
@@ -22,12 +23,19 @@ class GreetingQueryHanlder implements QueryHandler<GreetingQuery, GreetingQueryR
     @Autowired
     private ExecutionContext executionContext = null;
 
+    @Autowired
+    private AuditEvent auditEvent = null;
 
     @Override
     public GreetingQueryResult execute(GreetingQuery qry) {
 
         if (executionContext == null)
             return new GreetingQueryResult(ReturnCodes.MISSING_EXECUTION_CONTEXT.getMessage(), ReturnCodes.MISSING_EXECUTION_CONTEXT.getId());
+
+        if (auditEvent == null)
+            return new GreetingQueryResult(ReturnCodes.MISSING_AUDIT_EVENT_CONTEXT.getMessage(), ReturnCodes.MISSING_AUDIT_EVENT_CONTEXT.getId());
+
+        auditEvent.setOperationHandler(this.getClass().getSimpleName());
 
         logger.debug("RequestId: " + executionContext.getRequestId());
 

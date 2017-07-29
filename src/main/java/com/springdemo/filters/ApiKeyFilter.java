@@ -46,8 +46,7 @@ public class ApiKeyFilter extends GenericFilterBean {
             this.executionContextBuilder(req);
             filterLogger.debug("Execution context set");
 
-            filterLogger.debug("RequestID: " + executionContext.getRequestId());
-            filterLogger.debug("SessionID: " + executionContext.getSessionId());
+            filterLogger.debug(executionContext.toString());
 
             filterLogger.info(reqHeaders);
             filterLogger.debug(applicationProperties.getHttpHeader().getvSolvNonce());
@@ -85,7 +84,7 @@ public class ApiKeyFilter extends GenericFilterBean {
 
     private Map<String, String> getHeadersInfo(HttpServletRequest request) {
 
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
 
         Enumeration headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()) {

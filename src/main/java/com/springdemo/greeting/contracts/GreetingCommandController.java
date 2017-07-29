@@ -1,6 +1,6 @@
 package com.springdemo.greeting.contracts;
 
-import com.springdemo.interceptors.Audit;
+import com.springdemo.interceptors.audit.Audit;
 import com.springdemo.greeting.contracts.commands.AddGreetingCommand;
 import com.springdemo.greeting.contracts.commands.AddGreetingCommandResult;
 import com.vsolv.appframework.cqrs.command.CommandHandler;
