@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 import static com.springdemo.shared.constants.Constant.*;
@@ -39,10 +40,6 @@ public class AuditInterceptor implements HandlerInterceptor {
         HandlerMethod hm = (HandlerMethod) handler;
         Method method = hm.getMethod();
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(method.getDeclaringClass().getSimpleName());
-        sb.append(":");
-
         if (executionContext == null)
             throw new ServiceException(ReturnCodes.MISSING_EXECUTION_CONTEXT);
 
@@ -53,7 +50,6 @@ public class AuditInterceptor implements HandlerInterceptor {
 
         if (auditLogger == null)
             throw new ServiceException(ReturnCodes.MISSING_AUDIT_LOGGER);
-
 
         if (method.getDeclaringClass().isAnnotationPresent(RestController.class) &&
                 method.isAnnotationPresent(Audit.class)) {
@@ -67,18 +63,12 @@ public class AuditInterceptor implements HandlerInterceptor {
             auditEvent.setRequestInTime(LocalDateTime.now());
 
             for (int i = 0; i < method.getParameterCount(); i++) {
-                sb.append(method.getParameters()[i].getType().getSimpleName());
-                sb.append(" | ");
-
                 //Expected only one parameter. If more than one present, then the last one will be recorded
                 auditEvent.setOperation(method.getParameters()[i].getType().getSimpleName());
 
                 //Read parameter values
                 logger.info(request.getRequestURI());
             }
-
-            request.setAttribute(AUDITINFO, sb.toString());
-            request.setAttribute(STARTTIME, System.currentTimeMillis());
         }
         return true;
     }
@@ -89,24 +79,14 @@ public class AuditInterceptor implements HandlerInterceptor {
         HandlerMethod hm = (HandlerMethod) handler;
         Method method = hm.getMethod();
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(request.getAttribute(AUDITINFO));
-
         if (executionContext == null)
             throw new ServiceException(ReturnCodes.MISSING_EXECUTION_CONTEXT);
-
-        logger.debug("RequestId: " + executionContext.getRequestId());
 
         if (method.getDeclaringClass().isAnnotationPresent(RestController.class) &&
                 method.isAnnotationPresent(Audit.class)) {
             logger.debug(method.getAnnotation(Audit.class).value());
 
-            sb.append(method.getReturnType().getSimpleName());
-
             auditEvent.setResponse(method.getReturnType().getSimpleName());
-
-            request.setAttribute(AUDITINFO, sb.toString());
-            request.setAttribute(ENDTIME, System.currentTimeMillis());
         }
     }
 
@@ -117,16 +97,11 @@ public class AuditInterceptor implements HandlerInterceptor {
         if (executionContext == null)
             throw new ServiceException(ReturnCodes.MISSING_EXECUTION_CONTEXT);
 
-        logger.debug("RequestId: " + executionContext.getRequestId());
-
         HandlerMethod hm = (HandlerMethod) handler;
         Method method = hm.getMethod();
+
         if (method.isAnnotationPresent(Audit.class)) {
-            logger.warn(method.getAnnotation(Audit.class).value() + ": " + request.getAttribute(AUDITINFO));
-            logger.debug("Total Took:" + ((Long) request.getAttribute(ENDTIME) - (Long) request.getAttribute(STARTTIME)));
-
             auditEvent.setResponseOutTime(LocalDateTime.now());
-
             auditLogger.logEvent(auditEvent);
         }
     }

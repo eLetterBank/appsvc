@@ -1,6 +1,7 @@
 package com.springdemo.app;
 
 import com.springdemo.interceptors.audit.AuditInterceptor;
+import com.springdemo.interceptors.performance.PerformanceInterceptor;
 import com.springdemo.shared.models.AuditEvent;
 import com.springdemo.shared.models.ExecutionContext;
 import com.springdemo.shared.utilities.auditlog.AuditLogger;
@@ -91,10 +92,18 @@ public class SampleApiApplication extends SpringBootServletInitializer {
             argumentResolvers.add(new GetJsonArgumentResolver());
         }
 
-        //Create Bean method fot "AuditInterceptor"
+        //Create Bean method for "AuditInterceptor"
         @Bean
+        @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
         AuditInterceptor auditInterceptor() {
             return new AuditInterceptor();
+        }
+
+        //Create Bean method for "PerformanceInterceptor"
+        @Bean
+        @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
+        PerformanceInterceptor performanceInterceptor() {
+            return new PerformanceInterceptor();
         }
 
         /**
@@ -102,6 +111,7 @@ public class SampleApiApplication extends SpringBootServletInitializer {
          */
         @Override
         public void addInterceptors(InterceptorRegistry registry) {
+            registry.addInterceptor(performanceInterceptor());
             registry.addInterceptor(auditInterceptor());
         }
 
