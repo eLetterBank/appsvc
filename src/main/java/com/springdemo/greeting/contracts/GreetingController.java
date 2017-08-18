@@ -1,28 +1,31 @@
 package com.springdemo.greeting.contracts;
 
+import com.springdemo.greeting.contracts.commands.AddGreetingCommand;
+import com.springdemo.greeting.contracts.commands.AddGreetingCommandResult;
 import com.springdemo.greeting.contracts.queries.GreetingQuery;
 import com.springdemo.greeting.contracts.queries.GreetingQueryResult;
 import com.springdemo.interceptors.audit.Audit;
+import com.vsolv.appframework.cqrs.command.CommandHandler;
 import com.vsolv.appframework.cqrs.query.QueryHandler;
 import com.vsolv.appframework.http.request.GetJsonRequestParam;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Calendar;
 
 @RestController
-@RequestMapping("/api/qry")
-public class GreetingQueryController {
+@RequestMapping("/api/v1")
+public class GreetingController {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Autowired
     private QueryHandler<GreetingQuery, GreetingQueryResult> greetingQryHandler;
+
+    @Autowired
+    private CommandHandler<AddGreetingCommand, AddGreetingCommandResult> greetingCmdHandler;
 
     @Audit("HEALTH-CHECK")
     @GetMapping(value = "/")
@@ -37,13 +40,19 @@ public class GreetingQueryController {
     }
 
     @Audit("GREETING")
-    @GetMapping(value = "/greeting",
-            produces = "application/json")
+    @GetMapping(value = "/greeting", produces = "application/json")
     public @ResponseBody
     GreetingQueryResult greeting(@GetJsonRequestParam GreetingQuery qry) {
 
         logger.info(qry.getClass().getSimpleName());
-
         return greetingQryHandler.execute(qry);
+    }
+
+    @Audit("ADD-GREETING")
+    @PostMapping(value = "/addGreeting", produces = "application/json")
+    public @ResponseBody
+    AddGreetingCommandResult addGreeting(@RequestBody AddGreetingCommand cmd) {
+        logger.debug(cmd);
+        return greetingCmdHandler.execute(cmd);
     }
 }
