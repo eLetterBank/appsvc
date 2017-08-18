@@ -16,7 +16,7 @@ public class ProductQueryHandler implements QueryHandler<ProductQuery,ProductQue
     @Override
     public ProductQueryResult execute(ProductQuery productQuery) {
 
-        String responseData = productQuery.getProduct().getProductId() + " - " + executionContext.getRequestId().toString();
+        String responseData = productQuery.getProduct().getProductId() + " - " + executionContext.getRequestId();
 
         return new ProductQueryResult(responseData, ReturnCodes.SUCCESS.getId());
     }
