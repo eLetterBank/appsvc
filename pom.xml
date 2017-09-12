@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.springdemo</groupId>
-    <artifactId>springDemo</artifactId>
+    <artifactId>appsvc</artifactId>
     <version>0.0.3</version>
     <packaging>jar</packaging>
 
-    <name>com.springdemo.app</name>
-    <description>Demo project for Spring Boot</description>
+    <name>Application Service</name>
+    <description>Demo project for Spring Boot RESTFul Service</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
